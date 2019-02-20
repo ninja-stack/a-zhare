@@ -17,5 +17,5 @@ I want a feature to view my related "Y" about "X"
 I can organize my "Y" better
 
 ## Acceptance Criteria
-- [] I can view all my "Y" in a card
-- [] I can delete my "Y" if it is not relevant anymore
+- [ ] I can view all my "Y" in a card
+- [ ] I can delete my "Y" if it is not relevant anymore

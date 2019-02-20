@@ -11,5 +11,5 @@ assignees: ''
 We need to create a page where it list down every "X" for current user.
 
 ## Acceptance Criteria
-- [] The list should be in list style
-- [] The list should contain title and created date
+- [ ] The list should be in list style
+- [ ] The list should contain title and created date

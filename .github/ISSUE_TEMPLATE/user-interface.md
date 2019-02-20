@@ -14,7 +14,7 @@ To-Do List Page
 This page contains list of To-Do with a checkbox on every item to mark it is done or not 
 
 ## Acceptance Criteria
-- [] The To-Do item should have a checkbox, title and created date in human readable way
-- [] When the checkbox is checked. Remove the item from the list.
-- [] There is a button to sort the list by criteria
-- [] There is a form to filter the list by criteria
+- [ ] The To-Do item should have a checkbox, title and created date in human readable way
+- [ ] When the checkbox is checked. Remove the item from the list.
+- [ ] There is a button to sort the list by criteria
+- [ ] There is a form to filter the list by criteria
