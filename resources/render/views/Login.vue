@@ -61,7 +61,7 @@
           <v-divider inset />
           <v-flex xs12>
             <div slot="label" class="pa-3 text-xs-center">
-              Don't have an account? <a href="#">Sign up</a>
+              Don't have an account? <a href="/signup">Sign Up</a>
             </div>
           </v-flex>
         </v-card>
