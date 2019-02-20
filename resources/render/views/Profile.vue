@@ -1,11 +1,37 @@
 <template>
   <v-container fluid>
-    <!--Put Here-->
+    <navigation-menu></navigation-menu>
+    <v-content>
+      <v-layout row wrap>
+        <post-card-input></post-card-input>
+        <div>
+          <request-post-card></request-post-card>
+          <content-post-card></content-post-card>         
+        </div>
+      </v-layout>
+    </v-content>
   </v-container>
 </template>
 
 <script>
-  export default {};
+  import NavigationMenu from '../components/NavigationMenu';
+  import PostCardInput from '../components/PostCardInput';
+  import ContentPostCard from '../components/ContentPostCard';
+  import RequestPostCard from '../components/RequestPostCard';
+  export default {
+    components: {
+      NavigationMenu,
+      PostCardInput,
+      ContentPostCard,
+      RequestPostCard
+    },
+    data: () => ({
+      drawer: null
+    }),
+    props: {
+      source: String
+    }
+  }
 </script>
 
 <style scoped lang="scss">
