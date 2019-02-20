@@ -1,4 +1,5 @@
-import Home from '../views/Home';
+import Home from '../views/Test';
+import Login from '../views/Login';
 
 export default {
   mode: 'history',
@@ -6,6 +7,10 @@ export default {
     {
       path: '/',
       component: Home
+    },
+    {
+      path: '/login',
+      component: Login
     }
   ]
 };
