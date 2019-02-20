@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style type="text/css" href="{{ asset('css/app.css') }}"></style>
+  <link rel="stylesheet" href="{{ mix('css/app.css') }}"/>
   <title>Laravel</title>
 </head>
 <body>
@@ -11,5 +11,5 @@
   {{-- Content --}}
 </div>
 </body>
-<script type="application/javascript" src="{{ asset('js/app.js') }}"></script>
+<script type="application/javascript" src="{{ mix('js/app.js') }}"></script>
 </html>

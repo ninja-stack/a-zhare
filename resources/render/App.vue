@@ -1,17 +1,15 @@
 <template>
-  <div id="container">
+  <v-app id="app">
     <router-view></router-view>
-  </div>
+  </v-app>
 </template>
 
 <script>
   export default {
-    name: 'app'
+    name: 'app',
   };
 </script>
 
 <style scoped lang="scss">
-  #container {
 
-  }
 </style>

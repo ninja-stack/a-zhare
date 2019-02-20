@@ -1,11 +1,8 @@
 import Vue from 'vue';
-import Buefy from 'buefy';
 import { router } from './plugins/router';
 import { store } from './plugins/vuex';
+import './plugins/vuetify';
 import App from './App';
-import 'buefy/dist/buefy.min.css';
-
-Vue.use(Buefy);
 
 new Vue({
   el: '#app',
