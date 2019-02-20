@@ -1,5 +1,5 @@
 <template>
-  <v-flex xs12 sm12>
+  <v-flex xs12 sm12 pt-2>
     <v-card>
       <v-card-title primary-title>
         <div>
@@ -32,10 +32,8 @@
 
 <script>
   export default {
-    name: 'login-form-header',
+    name: 'content-post-card',
     props: [
-      'text',
-      'color'
     ]
   };
 </script>
