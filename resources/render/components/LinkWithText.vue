@@ -8,7 +8,7 @@
 
 <script>
   export default {
-    name: 'LoginFormCardRegisterLink',
+    name: 'link-with-text',
     props: [
       'text',
       'url',

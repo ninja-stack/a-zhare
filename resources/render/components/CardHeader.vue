@@ -32,7 +32,7 @@
 
 <script>
   export default {
-    name: 'login-form-header',
+    name: 'card-header',
     props: [
       'text',
       'color'
