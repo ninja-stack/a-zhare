@@ -1,12 +1,12 @@
 <template>
   <v-container fluid>
-    <navigation-menu></navigation-menu>
+    <navigation-menu name="PROFILE_OWNER"/>
     <v-content>
       <v-layout row wrap>
-        <post-card-input></post-card-input>
+        <post-card-input/>
         <div>
-          <request-post-card></request-post-card>
-          <content-post-card></content-post-card>         
+          <request-post-card/>
+          <content-post-card/>
         </div>
       </v-layout>
     </v-content>

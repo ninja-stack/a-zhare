@@ -10,6 +10,7 @@
 
 <script>
   import LoginForm from '../components/LoginFormCard';
+
   export default {
     components: {LoginForm}
   };
