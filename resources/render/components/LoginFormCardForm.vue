@@ -29,7 +29,7 @@
     <v-card-actions>
       <v-btn :disabled="!valid"
              color="success"
-             @click="validate"
+             @click="submit"
              large block>
         Login
       </v-btn>
@@ -55,9 +55,17 @@
       };
     },
     methods: {
-      validate() {
+      submit() {
         if (this.$refs.form.validate()) {
-          this.snackbar = true;
+          const formData = {
+            email: this.email,
+            password: this.password
+          };
+
+          console.log(formData);
+
+          localStorage.setItem('uid', this.email);
+          this.$router.push('/');
         }
       }
     }
