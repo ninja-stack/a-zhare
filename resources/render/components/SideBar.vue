@@ -12,7 +12,19 @@
           <v-icon>dashboard</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
-          <v-list-tile-title>Dashboard</v-list-tile-title>
+          <v-list-tile-title>
+            <a href="/">Dashboard</a>
+          </v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+      <v-list-tile>
+        <v-list-tile-action>
+          <v-icon>group</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-content>
+          <v-list-tile-title>
+            <a href="/community">Community</a>
+          </v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
       <v-list-tile>
@@ -29,9 +41,8 @@
 
 <script>
   export default {
-    name: 'sidebar',
-    props: [
-    ]
+    name: 'side-bar',
+    props: []
   };
 </script>
 

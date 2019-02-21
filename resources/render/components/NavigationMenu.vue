@@ -1,21 +1,21 @@
 <template>
   <div>
-    <sidebar></sidebar>
+    <side-bar/>
     <v-toolbar app fixed clipped-left>
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>{{ name }}</v-toolbar-title>
     </v-toolbar>
   </div>
 </template>
 
 <script>
-  import Sidebar from '../components/Sidebar';
+  import SideBar from './SideBar';
+
   export default {
-     components: {
-      Sidebar
+    components: {
+      SideBar
     },
     name: 'navigation-menu',
-    props: [
-    ]
+    props: ['name']
   };
 </script>
 

@@ -72,7 +72,7 @@
 
 <script>
 export default {
-  name: 'signup-form-card-form',
+  name: 'sign-up-form-card-form',
   data: () => ({
     valid: true,
     fullname: '',
