@@ -15,4 +15,14 @@ class Community extends Model
         'member_id'
       );
   }
+
+  public function posts() {
+    return $this
+      ->belongsToMany(
+        'App\Post',
+        'posts_communities',
+        'community_id',
+        'post_id'
+      );
+  }
 }
