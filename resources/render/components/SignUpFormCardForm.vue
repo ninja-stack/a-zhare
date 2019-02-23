@@ -123,7 +123,7 @@
             password_confirmation: this.confirm_password
           };
 
-          await this.$store.dispatch('signUp/register', formData);
+          await this.$store.dispatch('sign-up/register', formData);
 
           if(localStorage.getItem('token') !== null) {
             this.$router.push('/')
