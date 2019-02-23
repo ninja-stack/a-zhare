@@ -5,6 +5,16 @@
         ref="form"
         v-model="valid"
         lazy-validation>
+        <v-alert
+          :value="$store.getters['signUp/isError']"
+          type="error"
+        >
+          <ul>
+            <li v-for="message of $store.getters['signUp/errorMessages']" :key="message">
+              {{ message }}
+            </li>
+          </ul>
+        </v-alert>
         <v-text-field
           id="fullname"
           prepend-icon="person"
@@ -26,7 +36,7 @@
 
         <v-text-field
           prepend-icon="mail"
-          name="login"
+          name="email"
           label="E-mail"
           type="text"
           required
@@ -61,7 +71,7 @@
     <v-card-actions>
       <v-btn :disabled="!valid"
         color="success"
-        @click="validate"
+        @click="submit"
         large block>
         Sign Up
       </v-btn>
@@ -71,43 +81,55 @@
 </template>
 
 <script>
-export default {
-  name: 'sign-up-form-card-form',
-  data: () => ({
-    valid: true,
-    fullname: '',
-    fullnameRules: [
-      v => !!v || 'Full Name is required'
-    ],
-    email: '',
-    emailRules: [
-      v => !!v || 'E-mail is required',
-      v => /.+@.+/.test(v) || 'E-mail must be valid'
-    ],
-    password: '',
-    passwordRules: [
-      v => !!v || 'Password is required'
-    ],
-    confirm_password: '',
-    confirm_passwordRules: [
-      v => !!v || 'Confirm Password is required'
-    ],
-    gender: '',
-    items: [
-      'Male',
-      'Female'
-    ],
-    genderRules: [
-      v => !!v || 'Gender is required'
-    ]
-  }),
+  export default {
+    name: 'sign-up-form-card-form',
+    data: () => ({
+      valid: true,
+      fullname: '',
+      fullnameRules: [
+        v => !!v || 'Full Name is required'
+      ],
+      email: '',
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+/.test(v) || 'E-mail must be valid'
+      ],
+      password: '',
+      passwordRules: [
+        v => !!v || 'Password is required'
+      ],
+      confirm_password: '',
+      confirm_passwordRules: [
+        v => !!v || 'Confirm Password is required'
+      ],
+      gender: '',
+      items: [
+        'Male',
+        'Female'
+      ],
+      genderRules: [
+        v => !!v || 'Gender is required'
+      ]
+    }),
 
-  methods: {
-    validate () {
-      if (this.$refs.form.validate()) {
-        this.snackbar = true
+    methods: {
+      async submit() {
+        if(this.$refs.form.validate()) {
+          const formData = {
+            name: this.fullname,
+            gender: this.gender == 'Male' ? '1' : '0',
+            email: this.email,
+            password: this.password,
+            password_confirmation: this.confirm_password
+          };
+
+          await this.$store.dispatch('signUp/register', formData);
+
+          if(localStorage.getItem('token') !== null) {
+            this.$router.push('/')
+          }
+        }
       }
     }
-  }
-}
+  };
 </script>
