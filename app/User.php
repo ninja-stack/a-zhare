@@ -2,9 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
@@ -45,5 +44,15 @@ class User extends Authenticatable implements JWTSubject
    */
   public function getJWTCustomClaims() {
     return [];
+  }
+
+  public function communities() {
+    return $this
+      ->belongsToMany(
+        'App\Community',
+        'communities_members',
+        'member_id',
+        'community_id'
+      );
   }
 }
