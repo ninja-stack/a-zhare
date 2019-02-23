@@ -5,6 +5,16 @@
         ref="form"
         v-model="valid"
         lazy-validation>
+        <v-alert
+          :value="$store.getters['login/isError']"
+          type="error"
+        >
+          <ul>
+            <li v-for="message of $store.getters['login/errorMessages']">
+              {{ message }}
+            </li>
+          </ul>
+        </v-alert>
         <v-text-field
           prepend-icon="person"
           name="login"
@@ -29,7 +39,7 @@
     <v-card-actions>
       <v-btn :disabled="!valid"
              color="success"
-             @click="validate"
+             @click="submit"
              large block>
         Login
       </v-btn>
@@ -55,9 +65,18 @@
       };
     },
     methods: {
-      validate() {
+      async submit() {
         if (this.$refs.form.validate()) {
-          this.snackbar = true;
+          const formData = {
+            email: this.email,
+            password: this.password
+          };
+
+          await this.$store.dispatch('login/login', formData);
+
+          if (localStorage.getItem('token') !== null) {
+            this.$router.push('/');
+          }
         }
       }
     }

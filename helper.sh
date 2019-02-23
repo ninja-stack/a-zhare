@@ -7,7 +7,6 @@ case $1 in
     command -v node >/dev/null 2>&1 || { echo >&2 "I require node but it's not installed. Aborting."; exit 1; }
     command -v yarn >/dev/null 2>&1 || { echo >&2 "I require yarn but it's not installed. Aborting."; exit 1; }
     command -v vagrant >/dev/null 2>&1 || { echo >&2 "I require vagrant but it's not installed. Aborting."; exit 1; }
-    command -v virtualbox >/dev/null 2>&1 || { echo >&2 "I require virtualbox but it's not installed. Aborting."; exit 1; }
 
     echo >&2 "PHP version";
     php -v;
