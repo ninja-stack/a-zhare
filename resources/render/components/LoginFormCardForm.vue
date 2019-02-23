@@ -5,6 +5,16 @@
         ref="form"
         v-model="valid"
         lazy-validation>
+        <v-alert
+          :value="$store.getters['login/isError']"
+          type="error"
+        >
+          <ul>
+            <li v-for="message of $store.getters['login/errorMessages']">
+              {{ message }}
+            </li>
+          </ul>
+        </v-alert>
         <v-text-field
           prepend-icon="person"
           name="login"
@@ -55,17 +65,18 @@
       };
     },
     methods: {
-      submit() {
+      async submit() {
         if (this.$refs.form.validate()) {
           const formData = {
             email: this.email,
             password: this.password
           };
 
-          console.log(formData);
+          await this.$store.dispatch('login/login', formData);
 
-          localStorage.setItem('uid', this.email);
-          this.$router.push('/');
+          if (localStorage.getItem('token') !== null) {
+            this.$router.push('/');
+          }
         }
       }
     }

@@ -3,18 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\User;
+use Hash;
+use JWTAuth;
 use Illuminate\Http\Response;
 
-class LoginController extends Controller
-{
+class LoginController extends Controller {
   public function login(LoginRequest $request) {
+    $user = User::where('email', $request->email)->first();
 
-
+    if (empty($user) || !Hash::check($request->password, $user->password)) {
+      return Response::create([
+        'message' => 'Invalid credential!',
+        'errors' => [
+          'auth' => [
+            'Invalid credential!'
+          ]
+        ]
+      ], 401, [
+        'Content-Type' => 'application/json',
+      ]);
+    }
 
     return Response::create([
-      'success' => true
+      'message' => 'Successfully authenticated!'
     ], 200, [
-      'Content-Type' => 'application/json'
+      'Content-Type' => 'application/json',
+      'Authorization' => JWTAuth::fromUser($user)
     ]);
   }
 }

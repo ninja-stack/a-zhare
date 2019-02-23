@@ -1,3 +1,5 @@
 export default {
-  isProcessing: false
+  isProcessing: false,
+  isError: false,
+  errorMessages: {}
 };
