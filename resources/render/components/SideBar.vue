@@ -1,7 +1,6 @@
 <template>
   <v-navigation-drawer
     permanent
-    v-model="drawer"
     clipped
     fixed
     app

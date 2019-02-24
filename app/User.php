@@ -55,4 +55,8 @@ class User extends Authenticatable implements JWTSubject
         'community_id'
       );
   }
+
+  public function ownedCommunities(){
+    return $this->hasMany('App\Community', 'owner_id', 'id');
+  }
 }

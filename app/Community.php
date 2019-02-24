@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Community extends Model
 {
+  protected $fillable = ['slug', 'name', 'description', 'owner_id'];
+
   public function members() {
     return $this
       ->belongsToMany(
