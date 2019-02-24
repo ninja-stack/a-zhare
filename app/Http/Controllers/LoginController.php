@@ -8,11 +8,25 @@ use Hash;
 use JWTAuth;
 use Illuminate\Http\Response;
 
-class LoginController extends Controller {
+class LoginController extends Controller
+{
   public function login(LoginRequest $request) {
     $user = User::where('email', $request->email)->first();
 
-    if (empty($user) || !Hash::check($request->password, $user->password)) {
+    if (!empty($user)) {
+      if (!Hash::check($request->password, $user->password)) {
+        return Response::create([
+          'message' => 'Invalid credential!',
+          'errors' => [
+            'auth' => [
+              'Invalid credential!'
+            ]
+          ]
+        ], 401, [
+          'Content-Type' => 'application/json',
+        ]);
+      }
+    } else {
       return Response::create([
         'message' => 'Invalid credential!',
         'errors' => [
@@ -29,7 +43,7 @@ class LoginController extends Controller {
       'message' => 'Successfully authenticated!'
     ], 200, [
       'Content-Type' => 'application/json',
-      'Authorization' => JWTAuth::fromUser($user)
+      'Authorization' => 'Bearer '.JWTAuth::fromUser($user)
     ]);
   }
 }
