@@ -109,7 +109,8 @@
       ],
       genderRules: [
         v => !!v || 'Gender is required'
-      ]
+      ],
+      isProcessing: false
     }),
 
     methods: {
@@ -117,15 +118,17 @@
         if(this.$refs.form.validate()) {
           const formData = {
             name: this.fullname,
-            gender: this.gender == 'Male' ? '1' : '0',
+            gender: this.gender === 'Male' ? '1' : '0',
             email: this.email,
             password: this.password,
             password_confirmation: this.confirm_password
           };
 
+          this.isProcessing = true;
           await this.$store.dispatch('sign-up/register', formData);
+          this.isProcessing = false;
 
-          if(localStorage.getItem('token') !== null) {
+          if(!this.$store.getters['sign-up/isError']) {
             this.$router.push('/')
           }
         }
