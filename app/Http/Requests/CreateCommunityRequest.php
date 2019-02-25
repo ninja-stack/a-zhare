@@ -24,7 +24,7 @@ class CreateCommunityRequest extends FormRequest
   public function rules()
   {
     return [
-      'slug' => 'required',
+      'slug' => 'required|min:5|unique:communities,slug',
       'name' => 'required',
       'description' => 'required'
     ];

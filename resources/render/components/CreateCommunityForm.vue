@@ -6,11 +6,11 @@
       lazy-validation
     >
       <v-alert
-        :value="$store.getters['login/isError']"
+        :value="$store.getters['create-community/isError']"
         type="error"
       >
         <ul>
-          <li v-for="message of $store.getters['login/errorMessages']" :key="message">
+          <li v-for="message of $store.getters['create-community/errorMessages']" :key="message">
             {{ message }}
           </li>
         </ul>
@@ -84,7 +84,10 @@ export default {
           'create-community/create', 
           {formData, token}
         );
-        this.$router.push('/');
+
+        if(!this.$store.getters['create-community/isError']) {
+          this.$router.push('/');
+        }
       }
     },
   }
