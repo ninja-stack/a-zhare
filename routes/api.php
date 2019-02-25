@@ -17,3 +17,8 @@ Route::post('/login', 'LoginController@login');
 Route::post('/register', 'SignUpController@register');
 
 Route::post('/create-community', 'CommunityController@createCommunity');
+
+Route::get('/test', function (){
+  return response()->json(['success' => true]);
+})->middleware('refresh');
+
