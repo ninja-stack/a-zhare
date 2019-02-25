@@ -11,6 +11,6 @@ class TestUserSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\User::class, 1)->state('test-user')->create();
+      factory(\App\User::class, 1)->state('test-user')->create();
     }
 }

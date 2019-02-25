@@ -79,6 +79,9 @@
           }
         }
       }
+    },
+    mounted: function() {
+      localStorage.removeItem('token');
     }
   };
 </script>
