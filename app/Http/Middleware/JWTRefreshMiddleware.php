@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
-class JWTMiddleware
+class JWTRefreshMiddleware
 {
   /**
    * Handle an incoming request.

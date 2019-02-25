@@ -20,4 +20,5 @@ Route::post('/create-community', 'CommunityController@createCommunity');
 
 Route::get('/test', function (){
   return response()->json(['success' => true]);
-})->middleware('guarded');
+})->middleware('refresh');
+
