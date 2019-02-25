@@ -10,7 +10,7 @@
             <content-post-card/>
           </div>
         </v-layout>
-        </v-container>
+      </v-container>
     </v-content>
   </div>
 </template>

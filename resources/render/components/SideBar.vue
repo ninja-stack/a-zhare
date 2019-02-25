@@ -60,7 +60,7 @@ export default {
         text: 'Dashboard'
       },
       {
-        to: '/user-profile',
+        to: '/profile',
         icon: 'person',
         text: 'User Profile'
       },
@@ -70,9 +70,14 @@ export default {
         text: 'Community'
       },
       {
-        to: '/notifications',
-        icon: 'notifications',
-        text: 'Notifications'
+        to: '/chat',
+        icon: 'chat',
+        text: 'Chat'
+      },
+      {
+        to: '/logout',
+        icon: 'exit_to_app',
+        text: 'Logout'
       }
     ],
     responsive: false,
