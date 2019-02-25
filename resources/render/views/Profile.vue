@@ -2,13 +2,15 @@
   <v-container fluid>
     <navigation-menu name="PROFILE_OWNER"/>
     <v-content>
-      <v-layout row wrap>
-        <post-card-input/>
-        <div>
-          <request-post-card/>
-          <content-post-card/>
-        </div>
+      <v-container fill-height fluid grid-list-xl>
+        <v-layout row wrap>
+          <post-card-input/>
+          <div>
+            <request-post-card/>
+            <content-post-card/>
+          </div>
       </v-layout>
+      </v-container>
     </v-content>
   </v-container>
 </template>

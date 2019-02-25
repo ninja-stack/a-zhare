@@ -1,16 +1,18 @@
 <template>
-  <v-container fluid>
+  <div>
     <navigation-menu name="Dashboard"/>
     <v-content>
-      <v-layout row wrap>
-        <post-card-input/>
-        <div>
-          <request-post-card/>
-          <content-post-card/>
-        </div>
-      </v-layout>
+      <v-container fill-height fluid grid-list-xl>
+        <v-layout row wrap>
+          <post-card-input/>
+          <div>
+            <request-post-card/>
+            <content-post-card/>
+          </div>
+        </v-layout>
+      </v-container>
     </v-content>
-  </v-container>
+  </div>
 </template>
 
 <script>
