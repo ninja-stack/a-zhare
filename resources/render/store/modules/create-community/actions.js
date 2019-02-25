@@ -7,6 +7,7 @@ export default {
 
   async create({commit}, {formData, token}) {
     commit('setLoadingState', true);
+    commit('setErrorState', false)
 
     try {
       const result = await Axios.post('/api/create-community', formData, {
@@ -17,7 +18,6 @@ export default {
       });
 
     } catch (e) {
-      console.log(e.response);
       commit('setErrorState', true);
       commit('setErrorMessages', e.response.data.errors);
     }
