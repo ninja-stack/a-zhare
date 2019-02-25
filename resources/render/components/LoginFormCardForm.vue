@@ -41,7 +41,8 @@
              color="success"
              @click="submit"
              large block>
-        Login
+        <v-progress-circular v-if="isProcessing"/>
+        <span v-else>Login</span>
       </v-btn>
     </v-card-actions>
   </div>
@@ -61,7 +62,8 @@
         password: '',
         passwordRules: [
           v => !!v || 'Password is required'
-        ]
+        ],
+        isProcessing: false
       };
     },
     methods: {
@@ -72,16 +74,15 @@
             password: this.password
           };
 
+          this.isProcessing = true;
           await this.$store.dispatch('login/login', formData);
+          this.isProcessing = false;
 
-          if (localStorage.getItem('token') !== null) {
+          if (!this.$store.getters['login/isError']) {
             this.$router.push('/');
           }
         }
       }
-    },
-    mounted: function() {
-      localStorage.removeItem('token');
     }
   };
 </script>
