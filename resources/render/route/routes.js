@@ -3,6 +3,7 @@ import Login from '../views/Login';
 import Profile from '../views/Profile';
 import Community from '../views/Community';
 import SignUp from '../views/SignUp';
+import CreateCommunity from '../views/CreateCommunity';
 
 export default {
   mode: 'history',
@@ -26,6 +27,10 @@ export default {
     {
       path: '/signup',
       component: SignUp
+    },
+    {
+      path: '/create-community',
+      component: CreateCommunity
     }
   ]
 };

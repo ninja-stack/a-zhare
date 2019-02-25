@@ -43,7 +43,7 @@ class LoginController extends Controller
       'message' => 'Successfully authenticated!'
     ], 200, [
       'Content-Type' => 'application/json',
-      'Authorization' => 'Bearer '.JWTAuth::fromUser($user)
+      'Authorization' => 'bearer '.JWTAuth::fromUser($user)
     ]);
   }
 }
