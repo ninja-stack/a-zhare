@@ -23,8 +23,7 @@ class SignUpController extends Controller
       'message' => 'Register success'
     ], 200, [
       'Content-Type' => 'application/json',
-      'Authorization' => JWTAuth::fromUser($user)
+      'Authorization' => 'bearer '.JWTAuth::fromUser($user)
     ]);
   }
 }
-    

@@ -1,8 +1,12 @@
 import Vue from 'vue';
-import Router from 'vue-router';
+import VueRouter from 'vue-router';
 import routes from '../route/routes';
+import { beforeEach } from '../route/guards';
 
-Vue.use(Router);
+Vue.use(VueRouter);
 
-export const router = new Router(routes);
+const Router = new VueRouter(routes);
+Router.beforeEach(beforeEach);
+
+export const router = Router;
 
