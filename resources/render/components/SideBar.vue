@@ -29,7 +29,30 @@
         </v-list-tile-title>
       </v-list-tile>
       <v-divider/>
-      
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-title>Community</v-list-tile-title>
+          </v-list-tile-content>
+
+          <v-list-tile-action>
+            <router-link to="/create-community">
+              <v-btn class="create-btn" small color="success">New</v-btn>
+            </router-link>
+          </v-list-tile-action>
+        </v-list-tile>
+
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-title>Post</v-list-tile-title>
+          </v-list-tile-content>
+
+          <v-list-tile-action>
+            <router-link to="/new-post">
+              <v-btn class="create-btn" small color="success">New</v-btn>
+            </router-link>
+          </v-list-tile-action>
+        </v-list-tile>
+      <v-divider/>
       <v-list-tile
         v-for="(link, i) in links"
         :key="i"
@@ -118,4 +141,11 @@ export default {
       height: 60%;
     }
   }
+.create-btn {
+  min-width: 50px;
+}
+
+a {
+  text-decoration: none;
+}
 </style>
