@@ -33,7 +33,6 @@ export default {
       path: '/chat',
       component: Chat
     },
-    },
     {
       path: '/create-community',
       component: CreateCommunity

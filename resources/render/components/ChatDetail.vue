@@ -6,21 +6,20 @@
 			</v-toolbar>
 		
 			<chat-detail-chat-panel />
-			<post-card-input/>
+			<chat-input-interface />
 		</v-card>
 	</v-flex>
 </template>
 
 <script>
-	import PostCardInput from '../components/PostCardInput';
 	import ChatDetailChatPanel from '../components/ChatDetailChatPanel';
-
+	import ChatInputInterface from '../components/ChatInputInterface';
 
   export default {
 		name: 'chat-detail',
 		components: {
-			PostCardInput,
 			ChatDetailChatPanel,
+			ChatInputInterface,
 		},
 		props: [
 			'name'
