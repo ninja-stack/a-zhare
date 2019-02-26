@@ -15,4 +15,14 @@ class Post extends Model
         'community_id'
       );
   }
+
+  public function applicants() {
+    return $this
+      ->belongsToMany(
+        'App\User',
+        'requests_applicants',
+        'post_id',
+        'applicant_id'
+      );
+  }
 }

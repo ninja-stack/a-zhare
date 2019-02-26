@@ -4,12 +4,14 @@
     <v-content>
       <v-container fill-height fluid grid-list-xl>
         <v-layout row wrap>
-          <post-card-input/>
-          <div>
-            <request-post-card/>
-            <content-post-card/>
+          <div v-if="$store.getters['posts/isError']">
+            <p>No such community</p>
           </div>
-      </v-layout>
+          <div v-else v-for="post in $store.getters['posts/posts']" :key="post.id">
+            <request-post-card v-if="post.type == 'REQUEST'" :post="post"/>
+            <content-post-card :post="post" v-else/>
+          </div>
+        </v-layout>
       </v-container>
     </v-content>
   </v-container>
@@ -27,6 +29,21 @@
       RequestPostCard,
       PostCardInput,
       NavigationMenu
+    },
+    async mounted () {
+      const slug = this.$route.params.slug;
+      await this.onload(slug);
+    },
+    beforeRouteUpdate (to, from, next) {
+      const slug = to.params.slug;
+      this.onload(slug);
+      next();
+    },
+    methods: {
+      async onload(slug) {
+        await this.$store.dispatch('posts/getPosts', slug);
+        const posts = this.$store.getters['posts/posts'];
+      }
     }
   };
 </script>

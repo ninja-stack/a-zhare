@@ -14,17 +14,7 @@ export default {
 
     return messages;
   },
-
-  drawerState(state) {
-    return state.drawer;
-  },
-
-  colorState(state) {
-    return state.color;
-  },
-
-  getCommunities(state){
-    return state.communities;
+  posts(state) {
+    return state.posts;
   }
 };
-
