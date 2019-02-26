@@ -12,6 +12,7 @@ export default {
       const token = result.headers.authorization;
       localStorage.setItem('token', token);
     } catch (e) {
+      commit('setErrorState', true);
       commit('setErrorMessages', e.response.data.errors);
     }
   }
