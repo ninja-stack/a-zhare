@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Community;
-use App\CommunityMember;
 use App\Http\Requests\CreateCommunityRequest;
 use JWTAuth;
 use Illuminate\Http\Response;
@@ -67,4 +64,5 @@ class CommunityController extends Controller
       'Content-Type' => 'application/json',
     ]);
   }
+}
 }

@@ -2,36 +2,6 @@
 
 case $1 in
   start*)
-    command -v php >/dev/null 2>&1 || { echo >&2 "I require php but it's not installed. Aborting."; exit 1; }
-    command -v composer >/dev/null 2>&1 || { echo >&2 "I require composer but it's not installed.  Aborting."; exit 1; }
-    command -v node >/dev/null 2>&1 || { echo >&2 "I require node but it's not installed. Aborting."; exit 1; }
-    command -v yarn >/dev/null 2>&1 || { echo >&2 "I require yarn but it's not installed. Aborting."; exit 1; }
-    command -v vagrant >/dev/null 2>&1 || { echo >&2 "I require vagrant but it's not installed. Aborting."; exit 1; }
-
-    echo >&2 "PHP version";
-    php -v;
-    echo >&2 "";
-
-    echo >&2 "Composer version";
-    composer -V;
-    echo >&2 "";
-
-    echo >&2 "Node version";
-    node -v;
-    echo >&2 "";
-
-    echo >&2 "Yarn version";
-    yarn -v;
-    echo >&2 "";
-
-    echo >&2 "Vagrant version";
-    vagrant -v;
-    echo >&2 "";
-
-    echo >&2 "VirtualBox version";
-    VBoxManage -v;
-    echo >&2 "";
-
     echo >&2 "Installing composer dependencies";
     composer install;
     echo >&2 "";
@@ -54,7 +24,8 @@ case $1 in
     vagrant up;
     echo >&2 "";
 
-    echo >&2 "Finished!";
+    echo >&2 "Running yarn watch";
+    yarn watch;
     ;;
   stop*)
     vagrant halt;
