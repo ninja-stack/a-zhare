@@ -4,7 +4,6 @@
     <v-content>
       <v-container fill-height fluid grid-list-xl>
         <v-layout row wrap>
-          <post-card-input/>
           <div>
             <request-post-card/>
             <content-post-card/>
@@ -27,6 +26,16 @@
       RequestPostCard,
       PostCardInput,
       NavigationMenu
+    },
+    data: () => ({
+      posts: []
+    }),
+
+    mounted () {
+      // const posts = this.$store.dispatch(
+      //   'posts/getPosts'        
+      // )
+
     }
   };
 </script>

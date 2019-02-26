@@ -22,3 +22,5 @@ Route::get('/test', function (){
   return response()->json(['success' => true]);
 })->middleware('refresh');
 
+Route::get('/get_user_communities', 'CommunityController@getUserCommunityList');
+Route::get('/community/{slug}', 'CommunityController@getCommunityPostList');
