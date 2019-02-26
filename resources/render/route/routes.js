@@ -6,6 +6,7 @@ import SignUp from '../views/SignUp';
 import Chat from '../views/Chat';
 import CreateCommunity from '../views/CreateCommunity';
 import CreatePost from '../views/CreatePost';
+import RequestDetail from '../views/RequestDetail';
 
 export default {
   mode: 'history',
@@ -42,6 +43,10 @@ export default {
     {
       path: '/new-post',
       component: CreatePost
+    },
+    {
+      path: '/request_detail',
+      component: RequestDetail
     }
   ]
 };
