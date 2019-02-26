@@ -23,8 +23,8 @@ export default {
     return state.color;
   },
 
-  getPosts(state){
-    return state.postList;
+  getCommunities(state){
+    return state.communities;
   }
 };
 

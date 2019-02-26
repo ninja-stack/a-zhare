@@ -56,14 +56,13 @@
       <div
         v-for="(link, i) in links"
         :key="i"
-        :to="link.to"
+        
       >
         <template v-if="link.to === '/community'" >
           <v-list-group
             value="true"
           >
             <v-list-tile
-              :active-class="$store.getters['layout/colorState']"
               avatar
               class="v-list-item"
               slot="activator"
@@ -76,11 +75,13 @@
               />
             </v-list-tile>
             
-            <v-list-tile v-for="post of $store.getters['layout/getPosts']" :key="post.id"
-              :to="{name: 'community', params: {slug: post.slug}}"
+            <v-list-tile 
+              v-for="community of $store.getters['layout/getCommunities']" :key="community.id"
+              :to="{name: 'community', params: {slug: community.slug}}"
+              :active-class="$store.getters['layout/colorState']"
             >
               <v-list-tile-title>
-                {{post.name}}
+                {{ community.name }}
               </v-list-tile-title>
             </v-list-tile>
           </v-list-group>
@@ -88,6 +89,7 @@
 
         <template v-else>
           <v-list-tile
+            :to="link.to"
             :active-class="$store.getters['layout/colorState']"
             avatar
             class="v-list-item"
@@ -158,8 +160,7 @@ export default {
 
     const token = localStorage.getItem('token')
 
-    await this.$store.dispatch('layout/getPostList', token);
-    // this.posts = this.$store.getters['layout/getPosts'];
+    await this.$store.dispatch('layout/getCommunities', token);
     this.isProccesing = false;
   },
   beforeDestroy () {
