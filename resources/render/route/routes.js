@@ -7,6 +7,7 @@ import Chat from '../views/Chat';
 import CreateCommunity from '../views/CreateCommunity';
 import CreatePost from '../views/CreatePost';
 import RequestDetail from '../views/RequestDetail';
+import SearchCommunity from '../views/SearchCommunity';
 
 export default {
   mode: 'history',
@@ -47,6 +48,10 @@ export default {
     {
       path: '/request_detail',
       component: RequestDetail
+    },
+    {
+      path: '/search-communities',
+      component: SearchCommunity
     }
   ]
 };

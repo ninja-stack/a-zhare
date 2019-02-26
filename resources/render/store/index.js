@@ -4,6 +4,7 @@ import login from './modules/login';
 import signUp from './modules/sign-up';
 import createCommunity from './modules/create-community';
 import posts from './modules/posts';
+import searchCommunity from './modules/search-community';
 
 const debug = process.env.NODE_ENV !== 'production';
 
@@ -14,7 +15,8 @@ export default {
     login,
     'sign-up': signUp,
     'create-community': createCommunity,
-    posts
+    posts,
+    'search-community': searchCommunity
   },
   strict: debug,
   plugins: []
