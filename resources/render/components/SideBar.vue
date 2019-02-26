@@ -151,7 +151,6 @@ export default {
       }
     },
   },
-
   async mounted () {
     this.onResponsiveInverted();
     window.addEventListener('resize', this.onResponsiveInverted);
