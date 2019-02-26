@@ -81,5 +81,3 @@ class CommunityController extends Controller
     ]);
   }
 }
-
-}
