@@ -21,27 +21,27 @@
         <v-img
         src="https://dummyimage.com/600x400/000/fff"
         aspect-ratio="2.75"
-      ></v-img>
+        ></v-img>
       
-      <v-card-actions>
-        <v-list-tile class="grow">
-          <v-list-tile-avatar >
-            <v-icon class="mr-1" color="red">fas fa-gift</v-icon>
-          </v-list-tile-avatar>
-          <v-list-tile-content>
-            <v-list-tile-title>Free C# ebook</v-list-tile-title>
-          </v-list-tile-content>
-          <v-layout
-            align-center
-            justify-end
-          >
-            <v-icon class="mr-1">fas fa-comment</v-icon>
-            <span class="subheading mr-2">256</span>
-            <v-icon class="mr-1">fas fa-heart</v-icon>
-            <span class="subheading">45</span>
-          </v-layout>
-        </v-list-tile>
-      </v-card-actions>
+        <v-card-actions>
+          <v-list-tile class="grow">
+            <v-list-tile-avatar >
+              <v-icon class="mr-1" color="red">fas fa-gift</v-icon>
+            </v-list-tile-avatar>
+            <v-list-tile-content>
+              <v-list-tile-title>Free C# ebook</v-list-tile-title>
+            </v-list-tile-content>
+            <v-layout
+              align-center
+              justify-end
+            >
+              <v-icon class="mr-1">fas fa-comment</v-icon>
+              <span class="subheading mr-2">256</span>
+              <v-icon class="mr-1">fas fa-heart</v-icon>
+              <span class="subheading">45</span>
+            </v-layout>
+          </v-list-tile>
+        </v-card-actions>
       </v-card-text>
     </v-card>
   </v-flex>

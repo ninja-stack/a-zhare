@@ -41,24 +41,23 @@
         </v-list-tile-action>
       </v-list-tile>
 
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-title>Post</v-list-tile-title>
-          </v-list-tile-content>
+      <v-list-tile>
+        <v-list-tile-content>
+          <v-list-tile-title>Post</v-list-tile-title>
+        </v-list-tile-content>
 
-          <v-list-tile-action>
-            <router-link to="/new-post">
-              <v-btn class="create-btn" small color="success">New</v-btn>
-            </router-link>
-          </v-list-tile-action>
-        </v-list-tile>
+        <v-list-tile-action>
+          <router-link to="/new-post">
+            <v-btn class="create-btn" small color="success">New</v-btn>
+          </router-link>
+        </v-list-tile-action>
+      </v-list-tile>
       <v-divider/>
       <div
         v-for="(link, i) in links"
         :key="i"
-        
       >
-        <template v-if="link.to === '/community'" >
+        <template v-if="link.to === '/community'">
           <v-list-group value="true">
             <v-list-tile
               avatar
@@ -68,9 +67,7 @@
               <v-list-tile-action>
                 <v-icon>{{ link.icon }}</v-icon>
               </v-list-tile-action>
-              <v-list-tile-title
-                v-text="link.text"
-              />
+              <v-list-tile-title v-text="link.text"/>
             </v-list-tile>
             
             <v-list-tile 
@@ -95,9 +92,7 @@
             <v-list-tile-action>
               <v-icon>{{ link.icon }}</v-icon>
             </v-list-tile-action>
-            <v-list-tile-title
-              v-text="link.text"
-            />
+            <v-list-tile-title v-text="link.text"/>
           </v-list-tile>
         </template>
       </div>
