@@ -9,5 +9,5 @@ $factory->define(\App\Post::class, function (Faker $faker) {
 });
 
 $factory->state(\App\Post::class, 'text-post', [
-  'type' => 'TEXT'
+  'type' => 'CONTENT'
 ]);

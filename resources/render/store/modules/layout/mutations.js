@@ -14,7 +14,7 @@ export default {
   toggleDrawer(state, payload) {
     state.drawer = payload;
   },
-  setPostList(state, postList) {
-    state.postList = postList;
+  setCommunities(state, communities) {
+    state.communities = communities;
   }
 }

@@ -4,5 +4,5 @@ export default {
   isProcessing: false,
   isError: false,
   errorMessage: {},
-  postList: {},
+  communities: {},
 };

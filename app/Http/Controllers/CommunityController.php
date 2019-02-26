@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateCommunityRequest;
-use JWTAuth;
 use Illuminate\Http\Response;
 use Log;
+use JWTAuth;
+
+use App\Community;
 
 class CommunityController extends Controller
 {
@@ -56,7 +58,21 @@ class CommunityController extends Controller
   public function getCommunityPostList($slug){
     $community = Community::where('slug', $slug)->first();
 
+    if(!$community) {
+      return Response::create([
+        'message' => 'No such community',
+        'errors' => [
+          'community' => [
+            'Invalid community'
+          ]
+        ]
+      ], 404, [
+        'Content-Type' => 'application/json',
+      ]);
+    }
+    
     $posts = $community->posts;
+
     return Response::create([
       'message' => 'Get community post successfully.',
       'posts' => $posts
@@ -65,4 +81,5 @@ class CommunityController extends Controller
     ]);
   }
 }
+
 }
