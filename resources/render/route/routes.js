@@ -18,7 +18,8 @@ export default {
       component: Login
     },
     {
-      path: '/community',
+      name: 'community',
+      path: '/community/:slug',
       component: Community
     },
     {

@@ -17,3 +17,6 @@ Route::post('/login', 'LoginController@login');
 Route::post('/register', 'SignUpController@register');
 
 Route::post('/create-community', 'CommunityController@createCommunity');
+Route::get('/community/{slug}', 'CommunityController@getCommunityPostList');
+
+Route::get('/get-user-communities', 'CommunityController@getUserCommunityList');
