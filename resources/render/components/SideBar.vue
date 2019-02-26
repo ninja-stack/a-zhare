@@ -59,9 +59,7 @@
         
       >
         <template v-if="link.to === '/community'" >
-          <v-list-group
-            value="true"
-          >
+          <v-list-group value="true">
             <v-list-tile
               avatar
               class="v-list-item"

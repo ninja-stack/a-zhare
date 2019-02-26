@@ -5,7 +5,7 @@
         <div>
           <span class="grey--text">Tokyo Blockchain Community</span>
           <h3 class="headline mb-0">Blockchain Seminar</h3>
-          <div>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</div>
+          <div>{{post.content}}</div>
         </div>
       </v-card-title>
       <v-img
@@ -34,6 +34,7 @@
   export default {
     name: 'content-post-card',
     props: [
+      'post'
     ]
   };
 </script>

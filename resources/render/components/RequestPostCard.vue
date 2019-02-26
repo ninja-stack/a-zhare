@@ -38,6 +38,7 @@
   export default {
     name: 'request-post-card',
     props: [
+      'post'
     ]
   };
 </script>

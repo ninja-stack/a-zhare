@@ -1,9 +1,11 @@
 export default {
-  getPosts(state, posts) {
-    state.posts = posts;
+  setErrorState(state, status) {
+    state.isError = status;
   },
-  
-  increment(state, increment) {
-    state.count += increment;
+  setErrorMessages(state, messages) {
+    state.errorMessages = messages;
+  },
+  setPosts(state, posts) {
+    state.posts = posts;
   }
 };

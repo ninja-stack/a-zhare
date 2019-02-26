@@ -13,14 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('/login', 'LoginController@login');
-Route::post('/register', 'SignUpController@register');
-
-Route::post('/create-community', 'CommunityController@createCommunity');
-
 Route::get('/test', function (){
   return response()->json(['success' => true]);
 })->middleware('refresh');
 
-Route::get('/get_user_communities', 'CommunityController@getUserCommunityList');
-Route::get('/community/{slug}', 'CommunityController@getCommunityPostList');
+Route::post('/login', 'LoginController@login');
+Route::post('/register', 'SignUpController@register');
+
+Route::get('/community/list/joined','CommunityController@getUserCommunityList');
+Route::get('/community/{slug}/posts','CommunityController@getCommunityPostList');
+Route::post('/create-community', 'CommunityController@createCommunity');

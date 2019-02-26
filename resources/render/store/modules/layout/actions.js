@@ -5,14 +5,13 @@ export default {
     commit('setLoadingState', true);
     commit('setErrorState', false);
     try {
-      const result = await Axios.get('/api/get_user_communities', {
+      const result = await Axios.get('/api/community/list/joined', {
         headers: {
           'Accept' : 'application/json',
           'Authorization' : `${token}`
         }
         
       }); 
-      
       commit('setCommunities', result.data.communities); 
     } catch (e) {
       commit('setErrorState', true);
