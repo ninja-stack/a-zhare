@@ -32,9 +32,18 @@
     },
     async mounted () {
       const slug = this.$route.params.slug;
-      await this.$store.dispatch('posts/getPosts', slug);
-      const posts = this.$store.getters['posts/posts'];
-      console.log(posts);
+      await this.onload(slug);
+    },
+    beforeRouteUpdate (to, from, next) {
+      const slug = to.params.slug;
+      this.onload(slug);
+      next();
+    },
+    methods: {
+      async onload(slug) {
+        await this.$store.dispatch('posts/getPosts', slug);
+        const posts = this.$store.getters['posts/posts'];
+      }
     }
   };
 </script>
