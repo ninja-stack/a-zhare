@@ -17,3 +17,5 @@ Route::post('/login', 'LoginController@login');
 Route::post('/register', 'SignUpController@register');
 
 Route::post('/create-community', 'CommunityController@createCommunity');
+Route::post('/create-content-post', 'PostController@createContentPost');
+Route::post('/create-request-post', 'PostController@createRequestPost');
