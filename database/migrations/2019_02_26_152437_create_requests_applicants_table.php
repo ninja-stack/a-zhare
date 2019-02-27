@@ -16,8 +16,8 @@ class CreateRequestsApplicantsTable extends Migration
         Schema::create('requests_applicants', function (Blueprint $table) {
             $table->unsignedInteger('post_id');
             $table->foreign('post_id')->references('id')->on('posts');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedInteger('applicant_id');
+            $table->foreign('applicant_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
