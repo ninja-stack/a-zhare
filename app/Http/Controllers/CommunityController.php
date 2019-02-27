@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Community;
-use App\CommunityMember;
 use App\Http\Requests\CreateCommunityRequest;
-use JWTAuth;
 use Illuminate\Http\Response;
+use Log;
+use JWTAuth;
+use App\Community;
 
 class CommunityController extends Controller
 {
@@ -37,6 +37,75 @@ class CommunityController extends Controller
 
     return Response::create([
       'message' => 'Community created successfully.'
+    ], 200, [
+      'Content-Type' => 'application/json',
+    ]);
+  }
+
+  public function getUserCommunityList() {
+    $token = JWTAuth::getToken();
+    $user = JWTAuth::toUser($token);
+    
+    $communities = $user->communities;
+    return Response::create([
+      'message' => 'Get user community list successfully.',
+      'communities' => $communities
+    ], 200, [
+      'Content-Type' => 'application/json',
+    ]);
+  }
+
+  public function searchCommunity(Request $request) {
+    $query = $request->get('q');
+    $communities = Community::orWhere('name', 'LIKE', '%'. $query .'%')
+                              ->orWhere('description', 'LIKE', '%'. $query .'%')
+                              ->with('owner')
+                              ->get();
+
+    return Response::create([
+      'message' => 'Found ' . count($communities) . ' communities',
+      'communities' => $communities
+    ], 200, [
+      'Content-Type' => 'application/json',
+    ]);
+  }
+
+  public function getCommunityPostList($slug){
+    $community = Community::where('slug', $slug)->first();
+
+    if(!$community) {
+      return Response::create([
+        'message' => 'No such community',
+        'errors' => [
+          'community' => [
+            'Invalid community'
+          ]
+        ]
+      ], 404, [
+        'Content-Type' => 'application/json',
+      ]);
+    }
+    
+    $posts = $community->posts;
+
+    return Response::create([
+      'message' => 'Get community post successfully.',
+      'posts' => $posts
+    ], 200, [
+      'Content-Type' => 'application/json',
+    ]);
+  }
+  
+  public function joinCommunity(Request $request) {
+    $id = $request->get('community_id');
+    $token = JWTAuth::getToken();
+
+    $community = Community::find($id);
+    $user = JWTAuth::toUser($token);
+    $join = $community->members()->attach($user);
+
+    return Response::create([
+      'message' => 'Joined ' . $community->name
     ], 200, [
       'Content-Type' => 'application/json',
     ]);

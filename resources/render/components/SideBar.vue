@@ -29,45 +29,82 @@
         </v-list-tile-title>
       </v-list-tile>
       <v-divider/>
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-title>Community</v-list-tile-title>
-          </v-list-tile-content>
+      <v-list-tile>
+        <v-list-tile-content>
+          <v-list-tile-title>Community</v-list-tile-title>
+        </v-list-tile-content>
 
-          <v-list-tile-action>
-            <router-link to="/create-community">
-              <v-btn class="create-btn" small color="success">New</v-btn>
-            </router-link>
-          </v-list-tile-action>
-        </v-list-tile>
+        <v-list-tile-action>
+          <router-link to="/create-community">
+            <v-btn class="create-btn" small color="success">New</v-btn>
+          </router-link>
+        </v-list-tile-action>
+      </v-list-tile>
 
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-title>Post</v-list-tile-title>
-          </v-list-tile-content>
+      <v-list-tile>
+        <v-list-tile-content>
+          <v-list-tile-title>Post</v-list-tile-title>
+        </v-list-tile-content>
 
-          <v-list-tile-action>
-            <router-link to="/new-post">
-              <v-btn class="create-btn" small color="success">New</v-btn>
-            </router-link>
-          </v-list-tile-action>
-        </v-list-tile>
+        <v-list-tile-action>
+          <router-link to="/new-post">
+            <v-btn class="create-btn" small color="success">New</v-btn>
+          </router-link>
+        </v-list-tile-action>
+      </v-list-tile>
       <v-divider/>
-      <v-list-tile
+      <div
         v-for="(link, i) in links"
         :key="i"
-        :to="link.to"
-        :active-class="$store.getters['layout/colorState']"
-        avatar
-        class="v-list-item"
       >
-        <v-list-tile-action>
-          <v-icon>{{ link.icon }}</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-title
-          v-text="link.text"
-        />
-      </v-list-tile>
+        <template v-if="link.to === '/community'">
+          <v-list-group value="true">
+            <v-list-tile
+              avatar
+              class="v-list-item"
+              slot="activator"
+            >
+              <v-list-tile-action>
+                <v-icon>{{ link.icon }}</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-title v-text="link.text"/>
+            </v-list-tile>
+            
+             <v-list-tile 
+              :active-class="$store.getters['layout/colorState']"
+              :to="{path: '/search-communities'}"
+            >
+              <v-list-tile-title>
+                Search Community
+              </v-list-tile-title>
+            </v-list-tile>
+
+            <v-list-tile 
+              v-for="community of $store.getters['layout/getCommunities']" :key="community.id"
+              :to="{name: 'community', params: {slug: community.slug}}"
+              :active-class="$store.getters['layout/colorState']"
+            >
+              <v-list-tile-title>
+                {{ community.name }}
+              </v-list-tile-title>
+            </v-list-tile>
+          </v-list-group>
+        </template>
+
+        <template v-else>
+          <v-list-tile
+            :to="link.to"
+            :active-class="$store.getters['layout/colorState']"
+            avatar
+            class="v-list-item"
+          >
+            <v-list-tile-action>
+              <v-icon>{{ link.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-title v-text="link.text"/>
+          </v-list-tile>
+        </template>
+      </div>
     </v-layout>
   </v-navigation-drawer>
 </template>
@@ -90,7 +127,10 @@ export default {
       {
         to: '/community',
         icon: 'group_work',
-        text: 'Community'
+        text: 'Community',
+        child: {
+
+        }
       },
       {
         to: '/chat',
@@ -115,9 +155,14 @@ export default {
       }
     },
   },
-  mounted () {
-    this.onResponsiveInverted()
-    window.addEventListener('resize', this.onResponsiveInverted)
+  async mounted () {
+    this.onResponsiveInverted();
+    window.addEventListener('resize', this.onResponsiveInverted);
+
+    const token = localStorage.getItem('token')
+
+    await this.$store.dispatch('layout/getCommunities', token);
+    this.isProccesing = false;
   },
   beforeDestroy () {
     window.removeEventListener('resize', this.onResponsiveInverted)

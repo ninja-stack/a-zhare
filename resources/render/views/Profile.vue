@@ -4,12 +4,40 @@
     <v-content>
       <v-container fill-height fluid grid-list-xl>
         <v-layout row wrap>
-          <post-card-input/>
-          <div>
-            <request-post-card/>
-            <content-post-card/>
-          </div>
-      </v-layout>
+          <v-flex>
+            <v-tabs left color="darkslategray" dark icons-and-text>
+              <v-tabs-slider color="blue"></v-tabs-slider>
+              <v-tab key="post">
+                Posts
+                <v-icon>far fa-clipboard</v-icon>
+              </v-tab>
+
+              <v-tab key="request">
+                Requests
+                <v-icon>fas fa-share-square</v-icon>
+              </v-tab>
+
+              <v-tab key="medal">
+                Medals
+                <v-icon color="white">
+                  fas fa-trophy
+                </v-icon>
+              </v-tab>
+
+              <v-tab-item key="posts">
+                <profile-post-tab-content />
+              </v-tab-item>
+
+              <v-tab-item  key="requests">
+                <profile-request-tab-content />
+              </v-tab-item>
+              
+              <v-tab-item  key="medals">
+                <profile-medal-tab-content />
+              </v-tab-item>
+            </v-tabs>
+          </v-flex>
+        </v-layout>
       </v-container>
     </v-content>
   </v-container>
@@ -17,15 +45,15 @@
 
 <script>
   import NavigationMenu from '../components/NavigationMenu';
-  import PostCardInput from '../components/PostCardInput';
-  import ContentPostCard from '../components/ContentPostCard';
-  import RequestPostCard from '../components/RequestPostCard';
+  import ProfilePostTabContent from '../components/ProfilePostTabContent';
+  import ProfileRequestTabContent from '../components/ProfileRequestTabContent';
+  import ProfileMedalTabContent from '../components/ProfileMedalTabContent';
   export default {
     components: {
       NavigationMenu,
-      PostCardInput,
-      ContentPostCard,
-      RequestPostCard
+      ProfilePostTabContent,
+      ProfileRequestTabContent,
+      ProfileMedalTabContent
     },
     data: () => ({
       drawer: null

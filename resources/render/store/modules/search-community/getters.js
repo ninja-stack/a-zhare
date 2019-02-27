@@ -15,16 +15,16 @@ export default {
     return messages;
   },
 
-  drawerState(state) {
-    return state.drawer;
+  communities(state) {
+    return state.communities
   },
 
-  colorState(state) {
-    return state.color;
+  isSuccess(state) {
+    return state.isSuccess;
   },
 
-  getCommunities(state){
-    return state.communities;
+  successMessage(state) {
+    return state.successMessage;
   }
 };
 

@@ -6,6 +6,8 @@ import SignUp from '../views/SignUp';
 import Chat from '../views/Chat';
 import CreateCommunity from '../views/CreateCommunity';
 import CreatePost from '../views/CreatePost';
+import RequestDetail from '../views/RequestDetail';
+import SearchCommunity from '../views/SearchCommunity';
 
 export default {
   mode: 'history',
@@ -19,7 +21,8 @@ export default {
       component: Login
     },
     {
-      path: '/community',
+      name: 'community',
+      path: '/community/:slug',
       component: Community
     },
     {
@@ -41,6 +44,14 @@ export default {
     {
       path: '/new-post',
       component: CreatePost
+    },
+    {
+      path: '/request_detail',
+      component: RequestDetail
+    },
+    {
+      path: '/search-communities',
+      component: SearchCommunity
     }
   ]
 };

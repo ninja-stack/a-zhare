@@ -3,6 +3,8 @@ import layout from './modules/layout';
 import login from './modules/login';
 import signUp from './modules/sign-up';
 import createCommunity from './modules/create-community';
+import posts from './modules/posts';
+import searchCommunity from './modules/search-community';
 
 const debug = process.env.NODE_ENV !== 'production';
 
@@ -12,7 +14,9 @@ export default {
     layout,
     login,
     'sign-up': signUp,
-    'create-community': createCommunity
+    'create-community': createCommunity,
+    posts,
+    'search-community': searchCommunity
   },
   strict: debug,
   plugins: []

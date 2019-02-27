@@ -1,20 +1,20 @@
 import Axios from 'axios';
 
 export default {
-  async login({commit}, credentials) {
-    commit('setErrorState', false);
+  async getPosts({commit}, slug) {
     try {
-      const result = await Axios.post('/api/login', credentials, {
+      const result = await Axios.get(`/api/community/${slug}/posts`, {
         headers: {
           'Accept': 'application/json'
         }
       });
+      
+      commit('setPosts', result.data.posts);
 
-      const token = result.headers.authorization;
-      localStorage.setItem('token', token);
     } catch (e) {
       commit('setErrorState', true);
       commit('setErrorMessages', e.response.data.errors);
     }
+    
   }
 };
