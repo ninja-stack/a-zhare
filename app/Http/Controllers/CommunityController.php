@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 use Log;
 use JWTAuth;
 use App\Community;
+use App\Post;
 
 class CommunityController extends Controller
 {
@@ -106,6 +107,40 @@ class CommunityController extends Controller
 
     return Response::create([
       'message' => 'Joined ' . $community->name
+    ], 200, [
+      'Content-Type' => 'application/json',
+    ]);
+  }
+
+  public function getAllPosts() {
+    $token = JWTAuth::getToken();
+    $user = JWTAuth::toUser($token);
+    $posts = [];
+
+    $communities_posts = $user->communities()->with('posts')->get();
+
+    foreach($communities_posts as $community_posts) {
+      foreach($community_posts->posts as $post) {
+        array_push($posts, $post->toArray());
+      }
+    }
+    
+    return Response::create([
+      'message' => 'Get all community post successfully.',
+      'posts' => $posts
+    ], 200, [
+      'Content-Type' => 'application/json',
+    ]);
+  }
+
+  public function getProfilePosts() {
+    $token = JWTAuth::getToken();
+    $user = JWTAuth::toUser($token);
+    $posts = Post::where('poster_id', $user->id)->get();
+
+    return Response::create([
+      'message' => 'Get all community post successfully.',
+      'posts' => $posts
     ], 200, [
       'Content-Type' => 'application/json',
     ]);

@@ -16,5 +16,13 @@ export default {
   },
   posts(state) {
     return state.posts;
+  },
+
+  requestPosts(state) {
+    return state.requestPosts;
+  },
+
+  contentPosts(state) {
+    return state.contentPosts
   }
 };

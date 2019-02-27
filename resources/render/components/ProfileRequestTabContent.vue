@@ -1,8 +1,7 @@
 <template>
-  <v-card flat>
-    <request-post-card/>
-    <request-post-card/>
-  </v-card>
+  <div>
+    <request-post-card v-for="post in posts" :key="post.id" :post="post" :button="'View Applicant'"/>
+  </div>
 </template>
 
 <script>
@@ -11,7 +10,10 @@ export default {
   name: 'profile-request-tab-content',
   components: {
     RequestPostCard
-  }
+  },
+  props: [
+    'posts'
+  ]
 }
 </script>
 

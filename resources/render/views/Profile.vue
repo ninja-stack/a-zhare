@@ -1,8 +1,8 @@
 <template>
-  <v-container fluid>
+  <div>
     <navigation-menu name="PROFILE_OWNER"/>
     <v-content>
-      <v-container fill-height fluid grid-list-xl>
+      <v-container grid-list-md>
         <v-layout row wrap>
           <v-flex>
             <v-tabs left color="darkslategray" dark icons-and-text>
@@ -25,11 +25,11 @@
               </v-tab>
 
               <v-tab-item key="posts">
-                <profile-post-tab-content />
+                <profile-post-tab-content :posts="$store.getters['posts/contentPosts']" />
               </v-tab-item>
 
               <v-tab-item  key="requests">
-                <profile-request-tab-content />
+                <profile-request-tab-content :posts="$store.getters['posts/requestPosts']" />
               </v-tab-item>
               
               <v-tab-item  key="medals">
@@ -40,7 +40,7 @@
         </v-layout>
       </v-container>
     </v-content>
-  </v-container>
+  </div>
 </template>
 
 <script>
@@ -60,6 +60,11 @@
     }),
     props: {
       source: String
+    },
+    async mounted () {
+      const token = localStorage.getItem('token');
+      await this.$store.dispatch('posts/getProfilePosts', token);
+      console.log(this.$store.getters['posts/requestPosts']);
     }
   }
 </script>
