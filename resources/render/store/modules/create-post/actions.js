@@ -8,7 +8,7 @@ export default {
       await Axios.post('/api/create-content-post', formData, {
         headers: {
           'Accept': 'application/json',
-          'Authorization': `${token}`
+          'Authorization': `${ token }`
         }
       });
 
@@ -25,7 +25,7 @@ export default {
       await Axios.post('/api/create-request-post', formData, {
         headers: {
           'Accept': 'application/json',
-          'Authorization': `${token}`
+          'Authorization': `${ token }`
         }
       });
 
@@ -34,5 +34,19 @@ export default {
       commit('setErrorRequestState', true);
       commit('setErrorMessagesRequest', e.response.data.errors);
     }
+  },
+  async getCommunities({commit}, token) {
+    const response = await Axios.get('/api/community/list/joined', {
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': `${ token }`
+      }
+    });
+
+    const communities = response.data.communities;
+
+    console.log(communities);
+
+    commit('setCommunities', communities);
   }
 };

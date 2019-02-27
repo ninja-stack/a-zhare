@@ -28,5 +28,9 @@ export default {
     }
 
     return messages;
+  },
+
+  communities(state) {
+    return state.communities;
   }
 };

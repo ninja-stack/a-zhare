@@ -10,5 +10,8 @@ export default {
   },
   setErrorMessagesRequest(state, messages) {
     state.errorMessagesRequest = messages;
+  },
+  setCommunities(state, communities) {
+    state.communities = communities;
   }
 };
