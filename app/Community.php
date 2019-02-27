@@ -27,4 +27,8 @@ class Community extends Model
         'post_id'
       );
   }
+
+  public function owner() {
+    return $this->belongsTo('App\User', 'owner_id');
+  }
 }

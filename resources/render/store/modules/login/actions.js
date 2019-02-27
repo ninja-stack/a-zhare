@@ -2,6 +2,7 @@ import Axios from 'axios';
 
 export default {
   async login({commit}, credentials) {
+    commit('setErrorState', false);
     try {
       const result = await Axios.post('/api/login', credentials, {
         headers: {
