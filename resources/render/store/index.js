@@ -6,6 +6,7 @@ import createCommunity from './modules/create-community';
 import posts from './modules/posts';
 import applicants from './modules/applicants';
 import searchCommunity from './modules/search-community';
+import createPost from './modules/create-post';
 
 const debug = process.env.NODE_ENV !== 'production';
 
@@ -18,6 +19,7 @@ export default {
     'create-community': createCommunity,
     posts,
     'search-community': searchCommunity,
+    'create-post': createPost,
     applicants
   },
   strict: debug,

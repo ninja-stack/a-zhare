@@ -6,98 +6,48 @@
       lazy-validation
     >
       <v-card-text>
-      <v-text-field
-        label="Title"
-        placeholder="Input your title"
-        v-model="title"
-        :rules="titleRules"
-      ></v-text-field>
+        <v-text-field
+          label="Title"
+          placeholder="Input your title"
+          v-model="title"
+          :rules="titleRules"
+        ></v-text-field>
 
-      <v-textarea
-        name="input-7-4"
-        label="Description"
-        v-model="description"
-        :rules="descriptionRules"
-      ></v-textarea>
+        <v-textarea
+          label="Description"
+          v-model="description"
+          :rules="descriptionRules"
+        ></v-textarea>
 
-      <v-text-field
-        label="Count"
-        placeholder="Input your count"
-        v-model="count"
-        :rules="countRules"
-      ></v-text-field>
+        <v-text-field
+          label="Count"
+          placeholder="Input your count"
+          v-model="count"
+          :rules="countRules"
+        ></v-text-field>
 
-      <v-layout row>
-        <v-flex xs6>
-          <v-menu
-            ref="dateFromMenu"
-            v-model="dateFromMenu"
-            :close-on-content-click="false"
-            :nudge-right="40"
-            lazy
-            transition="scale-transition"
-            offset-y
-            full-width
-            max-width="290px"
-            min-width="290px"
-          >
-            <v-text-field
-              slot="activator"
-              v-model="dateFrom"
-              label="Date From"
-              hint="MM/DD/YYYY format"
-              persistent-hint
-              prepend-icon="event"
-              :rules="dateFromRules"
-            ></v-text-field>
-            <v-date-picker
-              v-model="dateFrom" no-title
-              @input="dateFromMenu = false"
-            ></v-date-picker>
-          </v-menu>
-        </v-flex>
+        <v-text-field
+          label="Reward"
+          placeholder="Input your reward"
+        ></v-text-field>
 
-        <v-flex xs6>
-          <v-menu
-            ref="dateToMenu"
-            v-model="dateToMenu"
-            :close-on-content-click="false"
-            :nudge-right="40"
-            lazy
-            transition="scale-transition"
-            offset-y
-            full-width
-            max-width="290px"
-            min-width="290px"
-          >
-            <v-text-field
-              slot="activator"
-              v-model="dateTo"
-              label="Date To"
-              hint="MM/DD/YYYY format"
-              persistent-hint
-              prepend-icon="event"
-              :rules="dateToRules"
-            ></v-text-field>
-            <v-date-picker
-              v-model="dateTo" no-title
-              @input="dateToMenu = false"
-            />
-          </v-menu>
-        </v-flex>
-      </v-layout>
-
-      <v-text-field
-        label="Reward"
-        placeholder="Input your reward"
-      ></v-text-field>
+        <v-select
+          v-model="community_slugs"
+          :items="communities"
+          item-value="slug"
+          item-text="name"
+          attach
+          chips
+          label="Choose Community"
+          multiple
+        ></v-select>
       </v-card-text>
 
       <v-card-actions>
         <v-btn
           :disabled="!validRequest"
           color="success"
-          @click="validateRequest"
+          @click="validate"
         >
           Submit
         </v-btn>
@@ -112,10 +62,6 @@
     data() {
       return {
         validRequest: true,
-        dateTo: new Date().toISOString().substr(0, 10),
-        dateFrom: new Date().toISOString().substr(0, 10),
-        dateFromMenu: false,
-        dateToMenu: false,
         title: '',
         titleRules: [
           v => !!v || 'Title is required'
@@ -128,17 +74,37 @@
         countRules: [
           v => !!v || 'Count is required'
         ],
-        dateFromRules: [
-          v => !!v || 'Date from is required'
-        ],
-        dateToRules: [
-          v => !!v || 'Date to is required'
-        ]
+        communities: [],
+        community_slugs: [],
+        loading: false
       };
     },
+    async mounted() {
+      await this.$store.dispatch('create-post/getCommunities', localStorage.getItem('token'));
+
+      this.communities = this.$store.getters['create-post/communities'];
+    },
     methods: {
-      validateRequest() {
-        this.$refs.form.validate();
+      async validate() {
+        if (this.$refs.form.validate()) {
+          const formData = {
+            title: this.title,
+            count: this.count,
+            content: this.description,
+            community_slugs: this.community_slugs
+          };
+
+          this.loading = true;
+          await this.$store.dispatch('create-post/createRequest', {
+            formData,
+            token: localStorage.getItem('token')
+          });
+          this.loading = false;
+
+          if (!this.$store.getters['create-post/setErrorRequestState']) {
+            this.$router.push({path: '/'});
+          }
+        }
       }
     }
   };

@@ -1,5 +1,7 @@
 export default {
   isError: false,
   errorMessages: {},
-  posts: {}
+  posts: {},
+  requestPosts: {},
+  contentPosts: {}
 };

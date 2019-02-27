@@ -8,6 +8,10 @@ $factory->define(\App\Post::class, function (Faker $faker) {
   ];
 });
 
-$factory->state(\App\Post::class, 'text-post', [
+$factory->state(\App\Post::class, 'content-post', [
   'type' => 'CONTENT'
+]);
+
+$factory->state(\App\Post::class, 'request-post', [
+  'type' => 'REQUEST'
 ]);

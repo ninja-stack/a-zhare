@@ -15,10 +15,16 @@ class PostsSeeder extends Seeder
     foreach ($communities as $community) {
       $members = $community->members;
       foreach ($members as $member) {
-        $post = factory(\App\Post::class)->state('text-post')->create([
+        $post = factory(\App\Post::class)->state('content-post')->create([
           'poster_id' => $member->id
         ]);
+        $post->communities()->save($community);
 
+        $post = factory(\App\Post::class)->state('request-post')->create([
+          'title' => 'Some title',
+          'rewards' => 'something',
+          'poster_id' => $member->id
+        ]);
         $post->communities()->save($community);
       }
     }

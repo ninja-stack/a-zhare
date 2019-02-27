@@ -1,14 +1,16 @@
 <template>
   <div>
-    <navigation-menu name="Dashboard"/>
+    <navigation-menu name="DASHBOARD"/>
     <v-content>
-      <v-container fill-height fluid grid-list-xl>
+      <v-container grid-list-md >
         <v-layout row wrap>
-          <post-card-input/>
-          <div>
-            <request-post-card/>
-            <content-post-card/>
-          </div>
+          <v-flex xs12 v-if="$store.getters['posts/isError']">
+            <p>No post</p>
+          </v-flex>
+          <v-flex xs12  ma-2 v-else v-for="post in $store.getters['posts/posts']" :key="post.id">
+            <request-post-card v-if="post.type == 'REQUEST'" :post="post" :button="'Apply'"/>
+            <content-post-card :post="post" v-else/>
+          </v-flex>
         </v-layout>
       </v-container>
     </v-content>
@@ -27,7 +29,11 @@
       PostCardInput,
       ContentPostCard,
       RequestPostCard
-    }
+    },
+    async mounted () {
+      const token = localStorage.getItem('token');
+      await this.$store.dispatch('posts/getAllCommunityPost', token);
+    },
   };
 </script>
 

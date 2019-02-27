@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <div>
     <navigation-menu name="CREATE COMMUNITY"/>
     <v-content>
       <v-container fill-height fluid grid-list-xl>
@@ -8,7 +8,7 @@
         </v-layout>
       </v-container>
     </v-content>
-  </v-container>
+  </div>
 </template>
 
 <script>

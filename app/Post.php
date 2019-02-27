@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+  protected $fillable = [
+    'title',
+    'content',
+    'type',
+    'rewards'
+  ];
+
   public function communities() {
     return $this
       ->belongsToMany(
