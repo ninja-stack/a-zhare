@@ -23,5 +23,7 @@ Route::post('/register', 'SignUpController@register');
 Route::get('/community/list/joined','CommunityController@getUserCommunityList');
 Route::get('/community/{slug}/posts','CommunityController@getCommunityPostList');
 Route::post('/create-community', 'CommunityController@createCommunity');
+Route::post('/create-content-post', 'PostController@createContentPost');
+Route::post('/create-request-post', 'PostController@createRequestPost');
 Route::get('/community/search', 'CommunityController@searchCommunity');
 Route::get('/community/join', 'CommunityController@joinCommunity');
