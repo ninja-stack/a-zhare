@@ -25,3 +25,5 @@ Route::get('/community/{slug}/posts','CommunityController@getCommunityPostList')
 Route::post('/create-community', 'CommunityController@createCommunity');
 Route::get('/community/search', 'CommunityController@searchCommunity');
 Route::get('/community/join', 'CommunityController@joinCommunity');
+Route::get('/post/all', 'CommunityController@getAllPosts');
+Route::get('/post/profile', 'CommunityController@getProfilePosts');

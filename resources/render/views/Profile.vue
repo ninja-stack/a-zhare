@@ -25,11 +25,11 @@
               </v-tab>
 
               <v-tab-item key="posts">
-                <profile-post-tab-content />
+                <profile-post-tab-content :posts="$store.getters['posts/contentPosts']" />
               </v-tab-item>
 
               <v-tab-item  key="requests">
-                <profile-request-tab-content />
+                <profile-request-tab-content :posts="$store.getters['posts/requestPosts']" />
               </v-tab-item>
               
               <v-tab-item  key="medals">
@@ -60,6 +60,11 @@
     }),
     props: {
       source: String
+    },
+    async mounted () {
+      const token = localStorage.getItem('token');
+      await this.$store.dispatch('posts/getProfilePosts', token);
+      console.log(this.$store.getters['posts/requestPosts']);
     }
   }
 </script>

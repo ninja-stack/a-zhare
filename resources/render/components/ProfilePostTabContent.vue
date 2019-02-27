@@ -1,7 +1,6 @@
 <template>
-  <v-card flat>
-    <content-post-card/>
-    <content-post-card/>
+  <v-card flat >
+    <content-post-card v-for="post in posts" :key="post.id" :post="post" />
   </v-card>
 </template>
 
@@ -11,7 +10,10 @@ export default {
   name: 'profile-post-tab-content',
   components: {
     ContentPostCard
-  }
+  },
+  props: [
+    'posts'
+  ]
 }
 </script>
 

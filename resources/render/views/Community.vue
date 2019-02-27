@@ -1,20 +1,20 @@
 <template>
-  <v-container fluid>
+  <div>
     <navigation-menu name="COMMUNITY_NAME"/>
     <v-content>
-      <v-container fill-height fluid grid-list-xl>
+      <v-container grid-list-md >
         <v-layout row wrap>
-          <div v-if="$store.getters['posts/isError']">
+          <v-flex xs12 v-if="$store.getters['posts/isError']">
             <p>No such community</p>
-          </div>
-          <div v-else v-for="post in $store.getters['posts/posts']" :key="post.id">
+          </v-flex>
+          <v-flex xs12  ma-2 v-else v-for="post in $store.getters['posts/posts']" :key="post.id">
             <request-post-card v-if="post.type == 'REQUEST'" :post="post"/>
             <content-post-card :post="post" v-else/>
-          </div>
+          </v-flex>
         </v-layout>
       </v-container>
     </v-content>
-  </v-container>
+  </div>
 </template>
 
 <script>

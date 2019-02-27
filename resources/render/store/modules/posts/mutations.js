@@ -7,5 +7,11 @@ export default {
   },
   setPosts(state, posts) {
     state.posts = posts;
+  },
+  setRequestPosts(state, posts) {
+    state.requestPosts = posts;
+  },
+  setContentPosts(state, posts) {
+    state.contentPosts = posts;
   }
 };
