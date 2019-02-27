@@ -7,5 +7,8 @@ export default {
   },
   setPosts(state, applicants) {
     state.applicants = applicants;
+  },
+  setApplicants(state, applicantData) {
+    state.applicants = applicantData;
   }
 };

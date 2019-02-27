@@ -6,22 +6,20 @@
       </v-toolbar>
       <v-list>
         <v-list-tile
-          v-for="item in items"
-          :key="item.title"
+          v-for="applicant of $store.getters['applicants/getApplicants']" :key="applicant.id"
+            :to="{name: 'applicants', params: {id: applicant.id}}"
           avatar
-        >
+        >      
           <v-list-tile-avatar>
-            <img :src="item.avatar">
+            <img src='https://cdn.vuetifyjs.com/images/lists/1.jpg' />
           </v-list-tile-avatar>
+        <v-list-tile-title>
+          {{ applicant.name }}
+        </v-list-tile-title >
 
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
-          </v-list-tile-content>
-
-          <v-list-tile-action>
-            <v-btn v-if="item.accept_status" color="#424242" dark>Accepted</v-btn>
-            <v-btn v-else>Accept</v-btn>
-          </v-list-tile-action>
+        <v-list-tile-action class="mr-3">
+          <v-btn color='#424242' dark>Accept</v-btn>
+        </v-list-tile-action>
 
         </v-list-tile>
       </v-list>
@@ -41,7 +39,15 @@ export default {
         { title: 'Cindy Baker', avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg' }
       ]
     }
-  }
+  },
+  async mounted () {
+ 
+    const token = localStorage.getItem('token')
+    const postId='2';
+
+    await this.$store.dispatch('applicants/getApplicants', postId);
+    this.isProccesing = false;
+  },
 }
 </script>
  

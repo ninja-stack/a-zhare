@@ -46,7 +46,7 @@ export default {
       component: CreatePost
     },
     {
-      path: '/applicants?postId=:postId',
+      path: '/applicants',
       component: RequestDetail
     },
     {

@@ -14,7 +14,7 @@ export default {
 
     return messages;
   },
-  applicants(state) {
+  getApplicants(state) {
     return state.applicants;
   }
 };
