@@ -1,6 +1,6 @@
 <template>
   <div>
-    <request-post-card v-for="post in posts" :key="post.id" :post="post" :button="'View Applicant'"/>
+    <request-post-card v-for="post in posts" :key="post.id" :post="post" :button="'View Applicant'" :url="'/applicants'"/>
   </div>
 </template>
 

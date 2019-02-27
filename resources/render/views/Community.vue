@@ -8,7 +8,7 @@
             <p>No such community</p>
           </v-flex>
           <v-flex xs12  ma-2 v-else v-for="post in $store.getters['posts/posts']" :key="post.id">
-            <request-post-card v-if="post.type == 'REQUEST'" :post="post" :button="'Apply'"/>
+            <request-post-card v-if="post.type == 'REQUEST'" :post="post" :button="'Apply'" :url="'/applicants'"/>
             <content-post-card :post="post" v-else/>
           </v-flex>
         </v-layout>
