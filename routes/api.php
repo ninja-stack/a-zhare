@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,3 +29,6 @@ Route::get('/community/search', 'CommunityController@searchCommunity');
 Route::get('/community/join', 'CommunityController@joinCommunity');
 
 Route::get('/applicants','RequestApplicantsController@getRequestApplicants');
+// Route::get('/send_applicant_email','RequestApplicantsController@applicant_email');
+
+Route::get('/send_applicant_email', 'RequestApplicantsController@sendApplicantMail');

@@ -18,7 +18,7 @@
         </v-list-tile-title >
 
         <v-list-tile-action class="mr-3">
-          <v-btn color='#424242' dark>Accept</v-btn>
+          <v-btn color='#424242' dark v-on:click="SentApplicantMail(applicant.email)">Accept</v-btn>
         </v-list-tile-action>
 
         </v-list-tile>
@@ -28,6 +28,7 @@
 </template>
  
 <script>
+import axios from 'axios';
 export default {
   name:"request-detail-responder-list",
   data () {
@@ -41,14 +42,48 @@ export default {
     }
   },
   async mounted () {
- 
+
     const token = localStorage.getItem('token')
     const postId='2';
 
     await this.$store.dispatch('applicants/getApplicants', postId);
     this.isProccesing = false;
   },
+  methods: {
+    SentApplicantMail : function(name, email){
+      console.log('kimak')
+      this.loading = true;
+      axios.get('http://192.168.88.88/api/send_applicant_email?email=' + email)
+      .then((response)  =>  {
+        console.log('kimak jadi')
+        this.loading = false;
+        this.jokes = response.data.value;
+      }, (error)  =>  {
+        console.log(error);
+        this.loading = false;
+      })
+      
+      
+    }
+  }
 }
+
+// function SentApplicantMail(name, email){
+//   console.log('kimak');
+
+// $.ajax({
+
+//   type:"GET",//or POST
+//   url:'192.168.88.88/api/send_applicant_email?name='+ name + '&email=' + email,
+ 
+//   success:function(responsedata){
+//     console.log("applicant");
+//           // process on data
+//           // alert("got response as "+"'"+responsedata+"'");
+
+//   }
+// })
+// }
 </script>
  
 <style lang="scss" scoped>
