@@ -70,6 +70,15 @@
               <v-list-tile-title v-text="link.text"/>
             </v-list-tile>
             
+             <v-list-tile 
+              :active-class="$store.getters['layout/colorState']"
+              :to="{path: '/search-communities'}"
+            >
+              <v-list-tile-title>
+                Search Community
+              </v-list-tile-title>
+            </v-list-tile>
+
             <v-list-tile 
               v-for="community of $store.getters['layout/getCommunities']" :key="community.id"
               :to="{name: 'community', params: {slug: community.slug}}"
