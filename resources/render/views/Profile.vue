@@ -1,8 +1,8 @@
 <template>
-  <v-container fluid>
+  <div>
     <navigation-menu name="PROFILE_OWNER"/>
     <v-content>
-      <v-container fill-height fluid grid-list-xl>
+      <v-container grid-list-md>
         <v-layout row wrap>
           <v-flex>
             <v-tabs left color="darkslategray" dark icons-and-text>
@@ -40,7 +40,7 @@
         </v-layout>
       </v-container>
     </v-content>
-  </v-container>
+  </div>
 </template>
 
 <script>

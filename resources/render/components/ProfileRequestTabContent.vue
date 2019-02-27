@@ -1,7 +1,7 @@
 <template>
-  <v-card flat>
-    <request-post-card v-for="post in posts" :key="post.id" :post="post" />
-  </v-card>
+  <div>
+    <request-post-card v-for="post in posts" :key="post.id" :post="post" :button="'View Applicant'"/>
+  </div>
 </template>
 
 <script>

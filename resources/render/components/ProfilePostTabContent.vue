@@ -1,7 +1,7 @@
 <template>
-  <v-card flat >
+  <div>
     <content-post-card v-for="post in posts" :key="post.id" :post="post" />
-  </v-card>
+  </div>
 </template>
 
 <script>
