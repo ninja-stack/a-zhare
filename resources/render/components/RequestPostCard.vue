@@ -26,7 +26,7 @@
           <v-icon class="mr-1" color="#E65100">fas fa-gift</v-icon>
           <span>Free C# ebook</span>
           <v-spacer></v-spacer>
-          <v-btn color="success">{{button}}</v-btn>
+          <v-btn :to="url" color="success">{{button}}</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -36,7 +36,8 @@
     name: 'request-post-card',
     props: [
       'post',
-      'button'
+      'button',
+      'url'
     ]
   };
 </script>
