@@ -72,7 +72,8 @@
       <v-btn :disabled="!valid"
         color="success"
         @click="submit"
-        large block>
+        large block
+      >
         Sign Up
       </v-btn>
     </v-card-actions>
@@ -82,7 +83,7 @@
 
 <script>
   export default {
-    name: 'sign-up-form-card-form',
+    name: 'sign-up-card-form',
     data: () => ({
       valid: true,
       fullname: '',

@@ -1,26 +1,30 @@
 <template>
   <v-card class="elevation-12">
     <card-header text="Login" color="primary"/>
-    <login-form-card-form/>
-    <login-form-card-sns-buttons/>
+    <login-card-form/>
+    <login-card-sns-buttons/>
     <v-divider inset/>
-    <link-with-text text="Don't have an account?" url="/signup" urlText="Sign Up"/>
+    <link-with-text
+      text="Don't have an account?"
+      url="/signup"
+      urlText="Sign Up"
+    />
   </v-card>
 </template>
 
 <script>
   import CardHeader from './CardHeader';
-  import LoginFormCardForm from './LoginFormCardForm';
-  import LoginFormCardSnsButtons from './LoginFormCardSNSButtons';
+  import LoginCardSnsButtons from './LoginCardSNSButtons';
   import LinkWithText from './LinkWithText';
+  import LoginCardForm from './LoginCardForm';
 
   export default {
-    name: 'login-form',
+    name: 'login-card',
     components: {
       CardHeader,
       LinkWithText,
-      LoginFormCardSnsButtons,
-      LoginFormCardForm
+      LoginCardSnsButtons,
+      LoginCardForm
     }
   };
 </script>

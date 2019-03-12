@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRequestsApplicantsTable extends Migration
+class CreateApplicantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateRequestsApplicantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('requests_applicants', function (Blueprint $table) {
+        Schema::create('applicants', function (Blueprint $table) {
             $table->unsignedInteger('post_id');
             $table->foreign('post_id')->references('id')->on('posts');
             $table->unsignedInteger('applicant_id');
@@ -29,6 +29,6 @@ class CreateRequestsApplicantsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('requests_applicants');
+        Schema::dropIfExists('applicants');
     }
 }

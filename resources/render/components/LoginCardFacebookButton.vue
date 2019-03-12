@@ -1,14 +1,14 @@
 <template>
-  <v-btn color="#1DA1F2" large block>
+  <v-btn color="#3B5998" large block>
     <v-icon color="white">
-      fab fa-twitter
+      fab fa-facebook-f
     </v-icon>
   </v-btn>
 </template>
 
 <script>
   export default {
-    name: 'login-form-card-twitter-button'
+    name: 'login-card-facebook-button'
   };
 </script>
 

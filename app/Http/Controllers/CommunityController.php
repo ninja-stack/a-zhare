@@ -121,10 +121,14 @@ class CommunityController extends Controller
 
     foreach($communities_posts as $community_posts) {
       foreach($community_posts->posts as $post) {
-        array_push($posts, $post->toArray());
+        $lol = $post->toArray();
+        $lel = $community_posts->toArray();
+        $lel['posts'] = null;
+        $lol['community'] = $lel;
+        array_push($posts, $lol);
       }
     }
-    
+
     return Response::create([
       'message' => 'Get all community post successfully.',
       'posts' => $posts

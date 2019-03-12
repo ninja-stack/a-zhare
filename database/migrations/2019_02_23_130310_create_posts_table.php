@@ -18,9 +18,11 @@ class CreatePostsTable extends Migration
       $table->text('content');
       $table->string('type');
       $table->text('rewards')->nullable();
+      $table->unsignedInteger('count')->default(1);
+      $table->boolean('isActive')->default(true);
+      $table->timestamps();
       $table->unsignedInteger('poster_id');
       $table->foreign('poster_id')->references('id')->on('users');
-      $table->timestamps();
     });
   }
 

@@ -13,8 +13,14 @@ export default {
       const token = result.headers.authorization;
       localStorage.setItem('token', token);
     } catch (e) {
+      if (!process.env.PRODUCTION) {
+        console.error(e.response);
+      }
       commit('setErrorState', true);
       commit('setErrorMessages', e.response.data.errors);
     }
+  },
+  async restart({commit}) {
+    commit('restart');
   }
 };

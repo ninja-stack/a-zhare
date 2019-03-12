@@ -2,18 +2,21 @@
   <v-container fluid fill-height>
     <v-layout row wrap align-center justify-center>
       <v-flex xs12 sm8 md4>
-        <login-form/>
+        <login-card/>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-  import LoginForm from '../components/LoginFormCard';
+  import LoginCard from '../components/LoginCard';
 
   export default {
     components: {
-      LoginForm
+      LoginCard
+    },
+    async beforeMount() {
+      await this.$store.dispatch('login/restart');
     }
   };
 </script>

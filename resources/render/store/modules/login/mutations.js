@@ -7,5 +7,9 @@ export default {
   },
   setErrorMessages(state, messages) {
     state.errorMessages = messages;
+  },
+  restart(state) {
+    state.isError = false;
+    state.errorMessages = {};
   }
 };

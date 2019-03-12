@@ -11,8 +11,7 @@
       <v-flex xs9>
         <v-card-title primary-title>
           <div>
-            <span class="grey--text">Tokyo Blockchain Community</span>
-            <h3 class="headline mb-0">Blockchain Seminar</h3>
+            <span class="grey--text">{{ post.community.name }}</span>
           </div>
         </v-card-title>
         <v-card-text class="subheading">
