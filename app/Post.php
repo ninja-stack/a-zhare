@@ -27,7 +27,7 @@ class Post extends Model
     return $this
       ->belongsToMany(
         'App\User',
-        'requests_applicants',
+        'applicants',
         'post_id',
         'applicant_id'
       );

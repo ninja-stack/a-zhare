@@ -50,7 +50,7 @@ class User extends Authenticatable implements JWTSubject
     return $this
       ->belongsToMany(
         'App\Community',
-        'communities_members',
+        'members',
         'member_id',
         'community_id'
       );

@@ -12,7 +12,7 @@ class Community extends Model
     return $this
       ->belongsToMany(
         'App\User',
-        'communities_members',
+        'members',
         'community_id',
         'member_id'
       );
