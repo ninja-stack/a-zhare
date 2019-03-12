@@ -12,10 +12,10 @@
     "fideloper/proxy": "^4.0",
     "laravel/framework": "5.7.*",
     "laravel/tinker": "^1.0",
-    "tymon/jwt-auth": "dev-develop"
+    "tymon/jwt-auth": "dev-develop",
+    "barryvdh/laravel-ide-helper": "^2.5"
   },
   "require-dev": {
-    "barryvdh/laravel-ide-helper": "^2.5",
     "beyondcode/laravel-dump-server": "^1.0",
     "doctrine/dbal": "^2.9",
     "filp/whoops": "^2.0",
