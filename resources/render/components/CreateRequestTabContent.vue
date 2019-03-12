@@ -20,8 +20,8 @@
         ></v-textarea>
 
         <v-text-field
-          label="Count"
-          placeholder="Input your count"
+          label="Number of People"
+          placeholder="Input your desired count of people"
           v-model="count"
           :rules="countRules"
         ></v-text-field>

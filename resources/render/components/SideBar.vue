@@ -15,17 +15,8 @@
       column
     >
       <v-list-tile avatar>
-        <v-list-tile-avatar
-          color="white"
-        >
-          <v-img
-            :src="logo"
-            height="34"
-            contain
-          />
-        </v-list-tile-avatar>
         <v-list-tile-title class="title">
-          Vuetify MD
+          A-Zhare
         </v-list-tile-title>
       </v-list-tile>
       <v-divider/>

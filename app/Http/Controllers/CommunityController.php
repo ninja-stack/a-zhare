@@ -136,6 +136,7 @@ class CommunityController extends Controller
         $lel = $community_posts->toArray();
         $lel['posts'] = null;
         $lol['community'] = $lel;
+        $lol['poster'] = $post->poster;
         array_push($posts, $lol);
       }
     }
