@@ -123,11 +123,11 @@ export default {
 
         }
       },
-      {
+/*      {
         to: '/chat',
         icon: 'chat',
         text: 'Chat'
-      },
+      },*/
       {
         to: '/logout',
         icon: 'exit_to_app',

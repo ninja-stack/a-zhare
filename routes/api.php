@@ -20,7 +20,6 @@ Route::post('/register', 'SignUpController@register');
 
 Route::get('/community/list/joined','CommunityController@getUserCommunityList');
 Route::get('/community/{slug}/posts','CommunityController@getCommunityPostList');
-Route::get('/community/{slug}','CommunityController@getCommunityInfo');
 Route::post('/create-community', 'CommunityController@createCommunity');
 Route::post('/create-content-post', 'PostController@createContentPost');
 Route::post('/create-request-post', 'PostController@createRequestPost');
@@ -32,3 +31,5 @@ Route::get('/post/{id}', 'PostController@getPost');
 
 Route::get('/applicants','RequestApplicantsController@getRequestApplicants');
 Route::get('/send_applicant_email', 'RequestApplicantsController@sendApplicantMail');
+
+Route::get('/community/{slug}','CommunityController@getCommunityInfo');

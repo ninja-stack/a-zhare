@@ -1,5 +1,4 @@
 import Axios from 'axios';
-import { join } from 'path';
 
 export default {
   async search({commit}, query) {
@@ -12,6 +11,7 @@ export default {
           q: query
         }
       });
+      console.log(result.data);
       commit('setCommunities', result.data.communities);
     } catch (e) {
       commit('setErrorState', true);
@@ -29,7 +29,7 @@ export default {
         params: {
           community_id: id
         }
-      })
+      });
 
       commit('setSuccessState', true);
       commit('setSuccessMessage', result.data.message);

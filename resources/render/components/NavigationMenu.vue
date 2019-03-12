@@ -61,15 +61,7 @@
             </v-card>
           </v-menu>
         </v-btn>
-        <v-btn icon>
-          <router-link
-            v-ripple
-            class="toolbar-items"
-            to="/user-profile"
-          >
-            <v-icon color="tertiary">account_circle</v-icon>
-          </router-link>
-        </v-btn>
+
       </v-toolbar-items>
     </v-toolbar>
   </div>

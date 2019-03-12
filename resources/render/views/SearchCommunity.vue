@@ -82,8 +82,7 @@
         ]
     }),
     mounted() {
-      const query = '';
-      this.onload(query);
+      this.onload(this.query);
     },
     methods: {
       async onload(query) {

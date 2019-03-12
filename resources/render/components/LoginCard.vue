@@ -2,7 +2,6 @@
   <v-card class="elevation-12">
     <card-header text="Login" color="primary"/>
     <login-card-form/>
-    <login-card-sns-buttons/>
     <v-divider inset/>
     <link-with-text
       text="Don't have an account?"

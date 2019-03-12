@@ -3,9 +3,9 @@
     <v-layout>
       <v-flex xs12>
         <v-card-title primary-title>
-          <div>
-            <span class="grey--text">{{ post.title }}</span>
-          </div>
+          <p style="white-space: pre;">
+           {{ post.title }}
+          </p>
         </v-card-title>
         <v-card-text class="subheading">
           <p>{{post.content}}</p>

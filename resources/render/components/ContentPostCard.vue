@@ -3,7 +3,9 @@
     <v-layout>
       <v-flex xs12>
         <v-card-text class="subheading">
+          <p style="white-space: pre;">
           {{post.content}}
+          </p>
         </v-card-text>
       </v-flex>
     </v-layout>
