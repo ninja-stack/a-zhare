@@ -15,5 +15,8 @@ export default {
       commit('setErrorState', true);
       commit('setErrorMessages', e.response.data.errors);
     }
+  },
+  async restart({commit}){
+    commit('restart');
   }
 };

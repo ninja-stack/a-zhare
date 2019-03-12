@@ -15,7 +15,7 @@ export default {
     example,
     layout,
     login,
-    'sign-up': signUp,
+    signUp,
     'create-community': createCommunity,
     posts,
     'search-community': searchCommunity,

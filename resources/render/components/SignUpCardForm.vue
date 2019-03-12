@@ -1,28 +1,31 @@
 <template>
   <div>
+    <v-snackbar
+      v-model="$store.getters['signUp/isError']"
+      color="error"
+      :timeout="0"
+      top
+      multi-line
+    >
+      <ul>
+        <li v-for="error of $store.getters['signUp/errorMessages']">
+          {{ error }}
+        </li>
+      </ul>
+    </v-snackbar>
     <v-card-text>
       <v-form
         ref="form"
         v-model="valid"
-        lazy-validation>
-        <v-alert
-          :value="$store.getters['signUp/isError']"
-          type="error"
-        >
-          <ul>
-            <li v-for="message of $store.getters['signUp/errorMessages']" :key="message">
-              {{ message }}
-            </li>
-          </ul>
-        </v-alert>
+        lazy-validation
+      >
         <v-text-field
-          id="fullname"
+          id="fullName"
           prepend-icon="person"
-          name="fullname"
+          name="fullName"
           label="Full Name"
           type="text"
-          v-model="fullname"
-          :rules="fullnameRules"
+          v-model="fullName"
           required
         ></v-text-field>
         <v-combobox
@@ -30,7 +33,6 @@
           v-model="gender"
           :items="items"
           label="Select your gender"
-          :rules="genderRules"
           required
         ></v-combobox>
 
@@ -41,7 +43,6 @@
           type="text"
           required
           v-model="email"
-          :rules="emailRules"
         ></v-text-field>
 
         <v-text-field
@@ -51,7 +52,6 @@
           label="Password"
           type="password"
           v-model="password"
-          :rules="passwordRules"
           required
         ></v-text-field>
 
@@ -62,14 +62,14 @@
           label="Confirm Password"
           type="password"
           v-model="confirm_password"
-          :rules="confirm_passwordRules"
           required
         ></v-text-field>
       </v-form>
     </v-card-text>
 
     <v-card-actions>
-      <v-btn :disabled="!valid"
+      <v-btn
+        :disabled="isProcessing"
         color="success"
         @click="submit"
         large block
@@ -86,30 +86,14 @@
     name: 'sign-up-card-form',
     data: () => ({
       valid: true,
-      fullname: '',
-      fullnameRules: [
-        v => !!v || 'Full Name is required'
-      ],
+      fullName: '',
       email: '',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+/.test(v) || 'E-mail must be valid'
-      ],
       password: '',
-      passwordRules: [
-        v => !!v || 'Password is required'
-      ],
       confirm_password: '',
-      confirm_passwordRules: [
-        v => !!v || 'Confirm Password is required'
-      ],
       gender: '',
       items: [
         'Male',
         'Female'
-      ],
-      genderRules: [
-        v => !!v || 'Gender is required'
       ],
       isProcessing: false
     }),
@@ -118,7 +102,7 @@
       async submit() {
         if(this.$refs.form.validate()) {
           const formData = {
-            name: this.fullname,
+            name: this.fullName,
             gender: this.gender === 'Male' ? '1' : '0',
             email: this.email,
             password: this.password,
@@ -126,10 +110,10 @@
           };
 
           this.isProcessing = true;
-          await this.$store.dispatch('sign-up/register', formData);
+          await this.$store.dispatch('signUp/register', formData);
           this.isProcessing = false;
 
-          if(!this.$store.getters['sign-up/isError']) {
+          if(!this.$store.getters['signUp/isError']) {
             this.$router.push('/')
           }
         }

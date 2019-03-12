@@ -12,7 +12,12 @@
   import SignUpCard from '../components/SignUpCard';
 
   export default {
-    components: {SignUpCard}
+    components: {
+      SignUpCard
+    },
+    async beforeMount() {
+      await this.$store.dispatch('signUp/restart');
+    }
   };
 </script>
 
