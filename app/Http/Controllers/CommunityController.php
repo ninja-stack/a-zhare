@@ -98,7 +98,7 @@ class CommunityController extends Controller
       ]);
     }
     
-    $posts = $community->posts;
+    $posts = $community->posts()->with('poster')->get();
 
     return Response::create([
       'message' => 'Get community post successfully.',

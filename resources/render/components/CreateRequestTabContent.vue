@@ -29,6 +29,7 @@
         <v-text-field
           label="Reward"
           placeholder="Input your reward"
+          v-model="rewards"
         ></v-text-field>
 
         <v-select
@@ -76,6 +77,7 @@
         ],
         communities: [],
         community_slugs: [],
+        rewards: '',
         loading: false
       };
     },
@@ -91,7 +93,8 @@
             title: this.title,
             count: this.count,
             content: this.description,
-            community_slugs: this.community_slugs
+            community_slugs: this.community_slugs,
+            rewards: this.rewards
           };
 
           this.loading = true;

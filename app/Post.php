@@ -32,4 +32,8 @@ class Post extends Model
         'applicant_id'
       );
   }
+
+  public function poster() {
+    return $this->belongsTo('App\User', 'poster_id', 'id');
+  }
 }

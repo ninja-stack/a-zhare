@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Community;
 use App\Http\Requests\CreateContentPostRequest;
 use App\Http\Requests\CreateRequestPostRequest;
+use App\Post;
 use Illuminate\Http\Response;
 use JWTAuth;
 
@@ -49,6 +50,16 @@ class PostController extends Controller
 
     return Response::create([
       'message' => 'Success!'
+    ], 200, [
+      'Content-Type' => 'application/json'
+    ]);
+  }
+
+  public function getPost($id){
+    $post = Post::with('applicants')->find($id);
+    return Response::create([
+      'message' => 'Success!',
+      'post' => $post
     ], 200, [
       'Content-Type' => 'application/json'
     ]);

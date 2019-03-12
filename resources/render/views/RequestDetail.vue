@@ -4,7 +4,6 @@
     <v-content>
       <v-container fill-height fluid grid-list-xl>
         <v-layout row wrap>
-          <request-post-card/>
           <request-detail-responder-list />
         </v-layout>
       </v-container>

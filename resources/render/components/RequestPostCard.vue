@@ -1,32 +1,31 @@
 <template>
   <v-card color="white">
     <v-layout>
-      <v-flex xs3>
-        <v-img
-          src="https://cdn.vuetifyjs.com/images/cards/foster.jpg"
-          contain
-          aspect-ratio="1"
-        ></v-img>
-      </v-flex>
-      <v-flex xs9>
+      <v-flex xs12>
         <v-card-title primary-title>
           <div>
-            <span class="grey--text">Tokyo Blockchain Community</span>
-            <h3 class="headline mb-0">Blockchain Seminar</h3>
+            <span class="grey--text">{{ post.title }}</span>
           </div>
         </v-card-title>
         <v-card-text class="subheading">
-          {{post.content}}
+          <p>{{post.content}}</p>
+          <p><v-icon class="mr-1">fas fa-gift</v-icon> {{ post.rewards }}</p>
         </v-card-text>
       </v-flex>
     </v-layout>
     <v-divider></v-divider>
     <v-card-actions>
-          <v-chip label outline color="info">REQUEST</v-chip>
-          <v-icon class="mr-1" color="#E65100">fas fa-gift</v-icon>
-          <span>Free C# ebook</span>
-          <v-spacer></v-spacer>
-          <v-btn :to="url" color="success">{{button}}</v-btn>
+      <v-list-tile-avatar>
+        <v-img src="https://via.placeholder.com/150"></v-img>
+      </v-list-tile-avatar>
+      <v-list-tile-content>
+        {{ post.poster.name }}
+      </v-list-tile-content>
+      <v-spacer></v-spacer>
+      <v-icon class="mr-1">fas fa-users</v-icon>
+      <span>0/50</span>
+      <v-spacer></v-spacer>
+      <v-btn :to="`${url}/${post.id}`" color="success">{{button}}</v-btn>
     </v-card-actions>
   </v-card>
 </template>

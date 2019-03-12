@@ -13,6 +13,7 @@ export default {
       commit('setCommunity', result.data.community);
 
     } catch (e) {
+      console.error(e.response);
       commit('setErrorState', true);
       commit('setErrorMessages', e.response.data.errors);
     }
@@ -29,6 +30,7 @@ export default {
       commit('setPosts', result.data.posts);
 
     } catch (e) {
+      console.error(e.response);
       commit('setErrorState', true);
       commit('setErrorMessages', e.response.data.errors);
     }
@@ -47,6 +49,7 @@ export default {
       commit('setPosts', result.data.posts);
 
     } catch (e) {
+      console.error(e.response);
       commit('setErrorState', true);
       commit('setErrorMessages', e.response.data.errors);
     }
@@ -77,6 +80,7 @@ export default {
       commit('setContentPosts', content);
 
     } catch (e) {
+      console.error(e.response);
       commit('setErrorState', true);
       commit('setErrorMessages', e.response.data.errors);
     }
