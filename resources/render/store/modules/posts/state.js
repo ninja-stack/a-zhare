@@ -3,5 +3,6 @@ export default {
   errorMessages: {},
   posts: {},
   requestPosts: {},
-  contentPosts: {}
+  contentPosts: {},
+  community: {}
 };

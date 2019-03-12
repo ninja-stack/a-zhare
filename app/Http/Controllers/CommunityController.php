@@ -34,10 +34,21 @@ class CommunityController extends Controller
       'description' => $request->get('description')
     ]);
 
-    $member = $community->members()->attach($user, ['is_mod' => true]);
+    $community->members()->attach($user, ['is_mod' => true]);
 
     return Response::create([
       'message' => 'Community created successfully.'
+    ], 200, [
+      'Content-Type' => 'application/json',
+    ]);
+  }
+
+  public function getCommunityInfo($slug){
+    $community = Community::where('slug', $slug)->first();
+
+    return Response::create([
+      'message' => 'Community created successfully.',
+      'community' => $community
     ], 200, [
       'Content-Type' => 'application/json',
     ]);
@@ -103,7 +114,7 @@ class CommunityController extends Controller
 
     $community = Community::find($id);
     $user = JWTAuth::toUser($token);
-    $join = $community->members()->attach($user);
+    $community->members()->attach($user);
 
     return Response::create([
       'message' => 'Joined ' . $community->name

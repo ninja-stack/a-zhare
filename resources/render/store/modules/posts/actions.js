@@ -1,6 +1,22 @@
 import Axios from 'axios';
 
 export default {
+  async getCommunityInfo({commit}, slug){
+    commit('setErrorState', false);
+    try {
+      const result = await Axios.get(`/api/community/${slug}`, {
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      commit('setCommunity', result.data.community);
+
+    } catch (e) {
+      commit('setErrorState', true);
+      commit('setErrorMessages', e.response.data.errors);
+    }
+  },
   async getPosts({commit}, slug) {
     commit('setErrorState', false);
     try {

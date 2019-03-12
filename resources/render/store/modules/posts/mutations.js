@@ -13,5 +13,8 @@ export default {
   },
   setContentPosts(state, posts) {
     state.contentPosts = posts;
+  },
+  setCommunity(state, community) {
+    state.community = community;
   }
 };

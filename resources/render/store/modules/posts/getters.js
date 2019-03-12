@@ -2,7 +2,6 @@ export default {
   isError(state) {
     return state.isError;
   },
-
   errorMessages(state) {
     const messages = [];
 
@@ -17,12 +16,13 @@ export default {
   posts(state) {
     return state.posts;
   },
-
   requestPosts(state) {
     return state.requestPosts;
   },
-
   contentPosts(state) {
     return state.contentPosts
+  },
+  communityName(state) {
+    return state.community.name;
   }
 };
