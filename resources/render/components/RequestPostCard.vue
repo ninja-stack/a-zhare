@@ -3,12 +3,13 @@
     <v-layout>
       <v-flex xs12>
         <v-card-title primary-title>
-          <p style="white-space: pre;">
-           {{ post.title }}
-          </p>
+          <h3>
+            {{ post.title }}
+          </h3>
+
         </v-card-title>
         <v-card-text class="subheading">
-          <p>{{post.content}}</p>
+          <p style="white-space: pre;">{{post.content}}</p>
           <p><v-icon class="mr-1">fas fa-gift</v-icon> {{ post.rewards }}</p>
         </v-card-text>
       </v-flex>
